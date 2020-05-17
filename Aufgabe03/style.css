@@ -1,0 +1,176 @@
+body {
+   background: url(Medien/bg.png);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   text-align: center;
+   }
+
+#content {
+   width: 800px;
+   background-color: white;
+}   
+
+#header {
+   background-image: linear-gradient(to bottom left, rgba(255, 205, 236, 0.938), rgba(191, 220, 247, 0.747));
+   height: 250px;
+   margin-top: -42px;
+}
+
+nav {
+   position: sticky;
+   top: 0;
+   margin-top: -8px;
+   background-color: rgba(131, 131, 131, 0.699);
+   overflow: hidden;
+   float: right;
+   border-radius: 0 0 0 3px;
+   width: 240px;
+   padding: 2px 5px;
+   z-index: 1;
+}
+
+nav a{  
+   text-decoration: none;
+   color: white;
+   font-size: 15px;
+}
+
+nav a:hover{
+   color: rgb(217, 199, 224);
+}
+
+.active {
+   color: rgb(59, 58, 58);
+   font-style:italic;
+}
+
+#sns {
+   overflow: hidden;
+   float: right;
+   margin-right: 20px;
+   margin-top: 20px;
+   text-align: right;
+}
+
+#sns img{
+   opacity: 0.2;
+   padding: 5px;
+}
+
+#sns img:hover {
+   opacity: 0.6;
+}
+
+h1 { 
+   text-align: center;
+   font-style:italic;
+   font-size: 50px;
+   color: rgb(190, 190, 190);
+   padding-top: 85px;
+}
+
+h2 {
+   text-align: center;
+   font-size: 18px;
+   color: rgba(174, 160, 190, 0.822);
+   overflow: hidden;
+   margin-left: 100px;
+}
+
+h3 {
+   font-size: 20px;
+   color: rgb(189, 189, 189);
+   text-align: left;
+   margin-left: 28px;
+   margin-top: 40px;
+}
+
+#welcome {
+   font-style:italic;
+   color: rgb(172, 172, 172);
+}
+
+.media img, video, audio {
+   padding: 20px;
+}
+
+.post {
+   border-radius: 3px 3px 3px 3px;
+   border: 1px solid rgb(219, 209, 209);
+   background-color: rgb(235, 230, 243);
+   margin-left: 80px;
+   width: 639px;
+   text-align: left;
+}
+
+.post ul {
+   list-style-type: none;
+}
+
+.post ul em{
+   color: rgb(141, 141, 141);
+}
+
+.post p {
+   margin-left: 40px;
+   color: rgb(105, 105, 105);
+}
+
+#cont {
+   text-align: left;
+   margin-left: 30px;
+   margin-right: 30px;
+   margin-top: 30px;
+   color: rgb(105, 105, 105);
+}
+
+#formular {
+   text-align: left;
+   margin-left: 30px;
+   line-height: 35px;
+}
+
+#vorname, #nachname, #email, #nachricht {
+   padding: 5px;
+   background-color: rgb(241, 233, 252);
+}
+
+#nachricht {
+   width: 300px;
+   height: 70px;
+   flex-wrap: wrap;
+   border: none;
+   border-radius: 3px 3px 3px 3px;
+   border: 1px solid rgb(219, 209, 209);
+   font-family: sans-serif;
+   margin-top: 5px;
+}
+
+input {
+   border-radius: 3px 3px 3px 3px;
+   border: 1px solid rgb(219, 209, 209);
+}
+
+#datenschutz {
+   font-size: 10px;
+   color: rgb(180, 180, 180);
+   margin-top: -10px;
+}
+
+button {
+   padding: 5px;
+   background-color: rgb(219, 214, 255);
+   border-radius: 3px 3px 3px 3px;
+   border: 1px solid rgb(219, 209, 209);
+   margin-bottom: 100px;
+}
+
+footer {
+   font-size: 10px;
+   background-color: rgb(196, 195, 231);
+   padding: 20px;
+   margin-bottom: -20px;
+}
