@@ -28,6 +28,9 @@
    #header > h2 {
       font-size: 18px;
    }
+   #menu p {
+      font-size: 14px;
+   }
 }
 
 body {
@@ -110,6 +113,10 @@ img[alt=icon] {
 
 #menu a:hover {
    color: rgb(136, 86, 67);
+}
+
+#menuALLSpan {
+   visibility: hidden;
 }
 
 #uv, #fanf {

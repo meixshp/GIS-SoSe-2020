@@ -75,18 +75,22 @@ var Aufgabe06;
     categoryFF.addEventListener("click", handleCategoryFF);
     let showAll = document.getElementById("menuALL");
     showAll.addEventListener("click", handleShowAll);
+    let menuAll = document.getElementById("menuALLSpan");
     //Methoden zur Kategorien-Anzeige
     function handleCategoryUV(_event) {
         underrated.setAttribute("style", "display:normal");
         fanfaves.setAttribute("style", "display:none");
+        menuAll.setAttribute("style", "visibility: visible");
     }
     function handleCategoryFF(_event) {
         underrated.setAttribute("style", "display:none");
         fanfaves.setAttribute("style", "display:normal");
+        menuAll.setAttribute("style", "visibility: visible");
     }
     function handleShowAll(_event) {
         underrated.setAttribute("style", "display:normal");
         fanfaves.setAttribute("style", "display:normal");
+        menuAll.setAttribute("style", "visibility: hidden");
     }
 })(Aufgabe06 || (Aufgabe06 = {}));
 //# sourceMappingURL=script.js.map

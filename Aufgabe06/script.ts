@@ -98,20 +98,25 @@ namespace Aufgabe06 {
 
     let showAll: HTMLElement = document.getElementById("menuALL") as HTMLElement;
     showAll.addEventListener("click", handleShowAll);
+
+    let menuAll: HTMLSpanElement = document.getElementById("menuALLSpan") as HTMLSpanElement;
     
     //Methoden zur Kategorien-Anzeige
     function handleCategoryUV(_event: Event): void {
         underrated.setAttribute("style", "display:normal");
         fanfaves.setAttribute("style", "display:none");
+        menuAll.setAttribute("style", "visibility: visible");
     }
 
     function handleCategoryFF(_event: Event): void {
         underrated.setAttribute("style", "display:none");
         fanfaves.setAttribute("style", "display:normal"); 
+        menuAll.setAttribute("style", "visibility: visible");
     }
 
     function handleShowAll(_event: Event): void {
         underrated.setAttribute("style", "display:normal");
         fanfaves.setAttribute("style", "display:normal");
+        menuAll.setAttribute("style", "visibility: hidden");
     }
 }
