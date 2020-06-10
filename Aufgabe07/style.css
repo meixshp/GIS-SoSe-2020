@@ -1,0 +1,177 @@
+@media screen and (min-width: 1024px) {
+   #header > img {
+      margin-top: 30px;
+   }
+   #content {
+      width: 1200px;
+   }
+   button {
+      cursor: pointer;
+   }
+}
+
+@media screen and (max-width: 1024px) {
+   #header > img {
+      width: 400px;
+      margin-top: 30px;
+   }
+   #header > h2 {
+      font-size: 20px;
+   }
+}
+
+@media screen and (max-width: 600px) {  
+   #header > img {
+      width: 250px;
+      margin-top: 30px;
+   }
+   #header > h2 {
+      font-size: 18px;
+   }
+   #menu p {
+      font-size: 14px;
+   }
+}
+
+body {
+   background: url(Icons/bg.png); 
+   font-family: OCR A Std, monospace;
+   font-size: 15px;
+   margin: auto auto auto auto;
+}
+
+#header {
+   padding: 20px;
+   margin: 2%;
+   text-align: center;
+   background-image: linear-gradient(to top right, rgba(240, 219, 206, 0.671), rgb(240, 219, 206));
+   border-radius: 5px 5px 5px 5px;
+   border: 2px solid rgba(95, 54, 35, 0.815);
+}
+
+nav {
+   position: sticky;
+   top: 0;
+   margin-top: -35px;
+   margin-right: 15px;
+   background-color: white;
+   overflow: hidden;
+   float: right;
+   border-radius: 0 0 10px 10px;
+   padding: 5px 10px;
+   z-index: 10;   
+}
+
+nav img {
+   width: 30px;
+}
+   
+nav img:hover {
+   opacity: 0.6;
+}
+
+img[alt=icon] {
+   margin-bottom: -2px;
+}
+
+#inCart {
+   background-color: red;
+   width: 20px;
+   height: 20px;
+   float: right; 
+   border-radius: 5px 5px 5px 5px;
+   text-align: center;
+   color: white;
+   margin-top: -30px;
+   margin-left: 15px;
+   position: absolute;
+   visibility: hidden
+}
+
+#content {
+   margin: auto;   
+   display: flex;
+   flex-wrap: wrap;
+}
+
+#menu {
+   width: 100%;
+   background-color: white;
+   font-size: 15px;
+   box-shadow: 0 0 10px #aaa;
+   padding: 5px;
+}   
+
+#menu ~ p {
+   color: rgb(94, 40, 61);
+   font-size: 12px;
+}
+#menu a {
+   text-decoration: none;
+   color: black;
+}
+
+#menu a:hover {
+   color: rgb(136, 86, 67);
+}
+
+#menuALLSpan {
+   visibility: hidden;
+}
+
+#uv, #fanf {
+   width: 90%;
+   background-color: white;
+   padding: 10px;
+   margin: 2%;
+   font-size: 20px;
+   border-radius: 5px 5px 5px 5px;
+   box-shadow: 0 0 10px rgb(85, 85, 85);
+}
+
+#underrated, #fanfaves {
+   margin-bottom: 10px   
+}
+
+.char {
+   padding: 20px;
+   width: 300px; 
+   height: 400px;
+   float: left;
+   margin: 20px;
+   margin-top: 10px;
+   text-align: center;
+   border-radius: 5px 5px 5px 5px;
+   border: 2px solid rgba(95, 54, 35, 0.815);
+   background-color: rgb(235, 230, 243);
+}
+
+.char > img {
+   width: 180px;
+}
+
+.char > img:hover{
+   opacity: 0.8;
+   border: 2px dotted rgba(95, 54, 35, 0.815);
+   border-radius: 10px 10px 10px 10px;
+}
+
+h3 + p {
+   color: rgb(76, 97, 71);
+}
+
+button {
+   padding: 5px;
+   background-color: rgb(219, 214, 255);
+   border-radius: 3px 3px 3px 3px;
+   border: 1px solid rgb(219, 209, 209);
+   margin-bottom: 100px;
+}
+
+footer {
+   font-size: 12px;
+   text-align: center;
+   background-color: rgba(240, 219, 206, 0.658);
+   padding: 20px;
+   margin-top: 40px;
+}
