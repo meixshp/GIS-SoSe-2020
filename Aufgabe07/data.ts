@@ -117,7 +117,7 @@ namespace Aufgabe07 {
         console.log(lager.length);
     }
 
-    let requestURL: string = "https://raw.githubusercontent.com/meixshp/GIS-SoSe-2020/Aufgabe07/newData.json";
+    let requestURL: string = "https://meixshp.github.io/GIS-SoSe-2020/Aufgabe07/newData.json";
 
     communicate(requestURL);
     console.log(lager.length);

@@ -115,7 +115,7 @@ var Aufgabe07;
         Aufgabe07.main(lager);
         console.log(lager.length);
     }
-    let requestURL = "https://raw.githubusercontent.com/meixshp/GIS-SoSe-2020/Aufgabe07/newData.json";
+    let requestURL = "https://meixshp.github.io/GIS-SoSe-2020/Aufgabe07/newData.json";
     communicate(requestURL);
     console.log(lager.length);
 })(Aufgabe07 || (Aufgabe07 = {}));
