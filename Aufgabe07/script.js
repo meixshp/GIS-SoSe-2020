@@ -9,7 +9,8 @@ var Aufgabe07;
     let cartDisplay = document.getElementById("inCart");
     let underrated = document.getElementById("underrated");
     let fanfaves = document.getElementById("fanfaves");
-    function main(lager) {
+    function main(_lager) {
+        let lager = _lager;
         for (let i = 0; i < lager.length; i++) {
             let div = document.createElement("div"); //jeden Artikel einzeln erstellen
             div.setAttribute("class", "char");

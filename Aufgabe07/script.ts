@@ -12,7 +12,8 @@ namespace Aufgabe07 {
     let underrated: HTMLDivElement = document.getElementById("underrated") as HTMLDivElement;
     let fanfaves: HTMLDivElement = document.getElementById("fanfaves") as HTMLDivElement;
 
-    export function main(lager: JSON[]): void {
+    export function main(_lager: JSON[]): void {
+        let lager: JSON[] = _lager;
         for (let i: number = 0; i < lager.length; i++) {
 
             let div: HTMLDivElement = document.createElement("div");  //jeden Artikel einzeln erstellen
