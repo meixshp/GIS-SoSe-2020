@@ -12,8 +12,10 @@ namespace Aufgabe07 {
     let underrated: HTMLDivElement = document.getElementById("underrated") as HTMLDivElement;
     let fanfaves: HTMLDivElement = document.getElementById("fanfaves") as HTMLDivElement;
 
-    export function main(_lager: JSON[]): void {
-        let lager: JSON[] = _lager;
+    export let lager: Artikel[] = [];
+
+    export function main(): void {
+
         for (let i: number = 0; i < lager.length; i++) {
 
             let div: HTMLDivElement = document.createElement("div");  //jeden Artikel einzeln erstellen
@@ -77,6 +79,7 @@ namespace Aufgabe07 {
     }
 
     //Button-Methode
+    
     function addToCart(_event: Event): void {
         inCart = inCart + 1;
 

@@ -9,15 +9,15 @@ var Aufgabe07;
     let cartDisplay = document.getElementById("inCart");
     let underrated = document.getElementById("underrated");
     let fanfaves = document.getElementById("fanfaves");
-    function main(_lager) {
-        let lager = _lager;
-        for (let i = 0; i < lager.length; i++) {
+    Aufgabe07.lager = [];
+    function main() {
+        for (let i = 0; i < Aufgabe07.lager.length; i++) {
             let div = document.createElement("div"); //jeden Artikel einzeln erstellen
             div.setAttribute("class", "char");
             //let index: string = "article" + i;
             //div.id = index;
             //Kategoriezuteilung
-            if (lager[i].kategorie == "under") { //underrated
+            if (Aufgabe07.lager[i].kategorie == "under") { //underrated
                 if (underCounter == 0) { //überschrift
                     if (full) {
                         let title = document.createElement("p");
@@ -42,16 +42,16 @@ var Aufgabe07;
                 fanCounter++;
             }
             let img = document.createElement("img"); //Bild
-            img.setAttribute("src", lager[i].image);
-            img.setAttribute("alt", lager[i].name);
+            img.setAttribute("src", Aufgabe07.lager[i].image);
+            img.setAttribute("alt", Aufgabe07.lager[i].name);
             div.appendChild(img);
             let h3 = document.createElement("h3"); // Name
-            div.appendChild(h3).innerHTML = lager[i].name;
+            div.appendChild(h3).innerHTML = Aufgabe07.lager[i].name;
             let description = document.createElement("p"); //Beschreibung
             description.setAttribute("class", "description");
-            div.appendChild(description).innerHTML = lager[i].beschreibung;
+            div.appendChild(description).innerHTML = Aufgabe07.lager[i].beschreibung;
             let price = document.createElement("p"); //Preis
-            div.appendChild(price).innerHTML = lager[i].preis + " €";
+            div.appendChild(price).innerHTML = Aufgabe07.lager[i].preis + " €";
             let button = document.createElement("button"); //Button
             button.setAttribute("index", i.toString());
             button.innerHTML = "hinzufügen";
@@ -68,7 +68,7 @@ var Aufgabe07;
         let target = _event.target;
         let transform = "" + target.getAttribute("index");
         let currentId = +transform;
-        cartSum = cartSum + lager[currentId].preis;
+        cartSum = cartSum + Aufgabe07.lager[currentId].preis;
         console.log("Die aktuelle Summe beträgt " + cartSum + " €.");
     }
     //Kategorien-Anzeige
