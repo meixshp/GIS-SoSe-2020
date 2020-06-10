@@ -1,5 +1,5 @@
 namespace Aufgabe07 {
-    interface Artikel {
+  /*  interface Artikel {
         kategorie: string; 
         image: string;
         name: string;
@@ -102,41 +102,23 @@ namespace Aufgabe07 {
         beschreibung: "Tier: Schaf, Charakter: Smug",
         preis: 23.05
     };
+    */
 
-    export let lager: Artikel[] = [artikel01, artikel02, artikel03, artikel04, artikel05, artikel06, artikel07, artikel08, artikel09, artikel10, artikel11, artikel12];
+   /* export let lager: Artikel[] = [artikel01, artikel02, artikel03, artikel04, artikel05, artikel06, artikel07, artikel08, artikel09, artikel10, artikel11, artikel12];
     let allJSON: string = JSON.stringify(lager);
-    console.log(allJSON); 
+    console.log(allJSON); */
+    
+    let lager: JSON[] = [];
 
-       
-    function connect(_url: RequestInfo): void {
-        // try to communicate
-        let promise: Promise<Response> = fetch(_url);
-        // establish the functions to call when communications 1. succeeds, 2. fails
-        promise.then(handleSuccess, handleFailure);
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        lager =  await response.json();
+        main(lager);
+        console.log(lager.length);
     }
-      
-    function handleFailure(_response: Response): void {
-        console.log("Failure", _response);
-    }
-      
-    function handleSuccess(_response: Response): void {
-        console.log("Success", _response);
-    } 
 
-    connect("newData.json");
-    let allArticles: JSON;
+    let requestURL: string = "https://raw.githubusercontent.com/meixshp/GIS-SoSe-2020/Aufgabe07/newData.json";
 
-    let requestURL: string = "newData.json";
-    let request: XMLHttpRequest = new XMLHttpRequest();
-    request.open("GET", requestURL);
-    request.responseType = "json";
-    request.send();
-
-    request.onload = function(): void {
-        allArticles = request.response;
-        console.log(allArticles);
-    };
-
-    //let myObj: Artikel = JSON.parse(allJSON);
-    //document.getElementById("demo").innerHTML = myObj.name;
+    communicate(requestURL);
+    console.log(lager.length);
 }
