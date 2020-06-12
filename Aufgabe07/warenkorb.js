@@ -3,7 +3,6 @@ var Aufgabe07;
 (function (Aufgabe07) {
     let cartSum = 0;
     for (let i = 0; i < (localStorage.length / 3); i++) {
-        //if (lager[i].kategorie == "under")
         let cartDiv = document.createElement("div");
         cartDiv.id = "" + i;
         cartDiv.setAttribute("class", "charInCart");
@@ -22,6 +21,7 @@ var Aufgabe07;
         button.addEventListener("click", handleDeleteFromCart);
         cartDiv.appendChild(button);
         cartSum += +localStorage.getItem("preis" + i);
+        console.log("Im Warenkorb: " + localStorage.getItem("name" + i));
     }
     let summe = document.createElement("h3");
     summe.innerHTML = "Summe: " + cartSum.toFixed(2) + " €";
@@ -33,18 +33,20 @@ var Aufgabe07;
     //Function zum Löschen eines Artikels
     function handleDeleteFromCart(_event) {
         let target = _event.target;
-        let transform = "" + target.getAttribute("index");
-        let minusPrice = +localStorage.getItem("preis" + transform);
+        let addedNum = "" + target.getAttribute("index");
+        console.log("Gelöscht: " + localStorage.getItem("name" + addedNum));
+        let minusPrice = +localStorage.getItem("preis" + addedNum);
         cartSum = cartSum - minusPrice;
-        localStorage.removeItem("name" + transform);
-        localStorage.removeItem("image" + transform);
-        localStorage.removeItem("preis" + transform);
-        document.getElementById(transform)?.remove();
-        location.reload();
+        summe.innerHTML = "Summe: " + cartSum.toFixed(2) + " €";
+        localStorage.removeItem("image" + addedNum);
+        localStorage.removeItem("name" + addedNum);
+        localStorage.removeItem("preis" + addedNum);
+        document.getElementById(addedNum)?.remove();
     }
     //Function zum Löschen aller Artikel
     function handleDeleteWholeCart(_event) {
         localStorage.clear();
+        console.log("Alles weg");
         location.reload();
     }
 })(Aufgabe07 || (Aufgabe07 = {}));

@@ -1,13 +1,8 @@
 namespace Aufgabe07 {
 
     let cartSum: number = 0;
-
-   
-
+    
     for (let i: number = 0; i < (localStorage.length / 3); i++) {
-
-       //if (lager[i].kategorie == "under")
-
 
         let cartDiv: HTMLDivElement = document.createElement("div");  
         cartDiv.id = "" + i;
@@ -32,6 +27,8 @@ namespace Aufgabe07 {
         cartDiv.appendChild(button);
 
         cartSum += +localStorage.getItem("preis" + i)!;
+        
+        console.log("Im Warenkorb: " + localStorage.getItem("name" + i));
     }
 
     let summe: HTMLHeadingElement = document.createElement("h3");
@@ -48,23 +45,24 @@ namespace Aufgabe07 {
     function handleDeleteFromCart(_event: Event): void {
 
         let target: HTMLElement = (<HTMLElement>_event.target);
-        let transform: string = "" + target.getAttribute("index");
+        let addedNum: string = "" + target.getAttribute("index");
+        console.log("Gelöscht: " + localStorage.getItem("name" + addedNum));
 
-        let minusPrice: number = +localStorage.getItem("preis" + transform)!;
+        let minusPrice: number = +localStorage.getItem("preis" + addedNum)!;
         cartSum = cartSum - minusPrice;
+        summe.innerHTML = "Summe: " + cartSum.toFixed(2) + " €";
 
-        localStorage.removeItem("name" + transform);
-        localStorage.removeItem("image" + transform);
-        localStorage.removeItem("preis" + transform);
+        localStorage.removeItem("image" + addedNum);
+        localStorage.removeItem("name" + addedNum);
+        localStorage.removeItem("preis" + addedNum);
 
-        document.getElementById(transform)?.remove();
-    
-        location.reload();
+        document.getElementById(addedNum)?.remove();
     }
 
     //Function zum Löschen aller Artikel
     function handleDeleteWholeCart(_event: Event): void {
         localStorage.clear();
+        console.log("Alles weg");
         location.reload();
     }
 }
