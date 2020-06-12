@@ -80,18 +80,22 @@ namespace Aufgabe07 {
 
     //Button-Methode
     
-    function addToCart(_event: Event): void {
+    export function addToCart(_event: Event): void {
         inCart = inCart + 1;
 
         cartDisplay.setAttribute("style", "visibility: visible");
-        cartDisplay.innerHTML = "" + inCart;
+        cartDisplay.innerHTML = "" + inCart;            
 
         let target: HTMLElement = (<HTMLElement>_event.target);
         let transform: string = "" + target.getAttribute("index");
         let currentId: number = +transform;
-        
+
         cartSum = cartSum + lager[currentId].preis;
-        console.log("Die aktuelle Summe beträgt " + cartSum + " €.");
+        console.log("Die aktuelle Summe beträgt " + cartSum.toFixed(2) + " €.");        
+        
+        localStorage.setItem("name" + (inCart - 1), lager[currentId].name);
+        localStorage.setItem("image" + (inCart - 1), lager[currentId].image);
+        localStorage.setItem("preis" + (inCart - 1), "" + lager[currentId].preis);
     }
 
     //Kategorien-Anzeige

@@ -69,8 +69,12 @@ var Aufgabe07;
         let transform = "" + target.getAttribute("index");
         let currentId = +transform;
         cartSum = cartSum + Aufgabe07.lager[currentId].preis;
-        console.log("Die aktuelle Summe beträgt " + cartSum + " €.");
+        console.log("Die aktuelle Summe beträgt " + cartSum.toFixed(2) + " €.");
+        localStorage.setItem("name" + (inCart - 1), Aufgabe07.lager[currentId].name);
+        localStorage.setItem("image" + (inCart - 1), Aufgabe07.lager[currentId].image);
+        localStorage.setItem("preis" + (inCart - 1), "" + Aufgabe07.lager[currentId].preis);
     }
+    Aufgabe07.addToCart = addToCart;
     //Kategorien-Anzeige
     let categoryUV = document.getElementById("menuUV");
     categoryUV.addEventListener("click", handleCategoryUV);

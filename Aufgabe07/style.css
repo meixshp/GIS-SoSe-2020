@@ -94,6 +94,15 @@ img[alt=icon] {
    flex-wrap: wrap;
 }
 
+#korbinhalt {
+   width: 100%; 
+   background-color: white; 
+   padding: 25px;
+   border-radius: 5px 5px 5px 5px;
+   border: 2px solid rgba(95, 54, 35, 0.815);
+   margin-bottom: 20px;
+}
+
 #menu {
    width: 100%;
    background-color: white;
@@ -156,6 +165,28 @@ img[alt=icon] {
    border-radius: 10px 10px 10px 10px;
 }
 
+.charInCart {
+   padding: 20px;
+
+   height: 215px;
+   margin: 20px;
+   margin-top: 10px;
+   border-radius: 5px 5px 5px 5px;
+   border: 2px solid rgba(95, 54, 35, 0.815);
+   background-color: rgb(235, 230, 243);
+}
+
+.charInCart > img {
+   width: 150px;   
+   float: left;
+   margin-right: 30px;
+}
+
+.charInCart > p, h4 {
+   margin: 30px;
+   
+}
+
 h3 + p {
    color: rgb(76, 97, 71);
 }
@@ -165,6 +196,10 @@ button {
    background-color: rgb(219, 214, 255);
    border-radius: 3px 3px 3px 3px;
    border: 1px solid rgb(219, 209, 209);
+   
+}
+
+.char > button {
    margin-bottom: 100px;
 }
 
@@ -173,5 +208,4 @@ footer {
    text-align: center;
    background-color: rgba(240, 219, 206, 0.658);
    padding: 20px;
-   margin-top: 40px;
 }
