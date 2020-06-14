@@ -8,6 +8,22 @@
    button {
       cursor: pointer;
    }
+   #korbinhalt {
+      width: 100%;
+   }
+   .charInCart {
+      height: 215px;
+   }
+   .charInCart > img {
+      width: 150px;   
+   }
+   .charInCart > p, h4 {
+      margin: 30px;
+   }
+   #deleteAll {
+      float: right;
+      margin-top: -40px;
+   }
 }
 
 @media screen and (max-width: 1024px) {
@@ -17,6 +33,18 @@
    }
    #header > h2 {
       font-size: 20px;
+   }
+   #korbinhalt {
+      width: 100%;
+   }
+   .charInCart {
+      height: 215px;
+   }
+   .charInCart > img {
+      width: 150px;   
+   }
+   .charInCart > p, h4 {
+      margin: 30px;
    }
 }
 
@@ -30,6 +58,22 @@
    }
    #menu p {
       font-size: 14px;
+   }
+   #korbinhalt {
+      margin: auto;   
+      display: flex;
+      flex-wrap: wrap;
+      width: 300px; 
+   }
+   .charInCart {
+      width: 250px;
+      height: 180px;
+   }
+   .charInCart > img {
+      width: 100px;   
+   }
+   .charInCart > p, h4 {
+      margin: 20px;
    }
 }
 
@@ -95,7 +139,6 @@ img[alt=icon] {
 }
 
 #korbinhalt {
-   width: 100%; 
    background-color: white; 
    padding: 25px;
    border-radius: 5px 5px 5px 5px;
@@ -167,8 +210,6 @@ img[alt=icon] {
 
 .charInCart {
    padding: 20px;
-
-   height: 215px;
    margin: 20px;
    margin-top: 10px;
    border-radius: 5px 5px 5px 5px;
@@ -176,15 +217,9 @@ img[alt=icon] {
    background-color: rgb(235, 230, 243);
 }
 
-.charInCart > img {
-   width: 150px;   
+.charInCart > img {  
    float: left;
    margin-right: 30px;
-}
-
-.charInCart > p, h4 {
-   margin: 30px;
-   
 }
 
 h3 + p {
@@ -196,7 +231,6 @@ button {
    background-color: rgb(219, 214, 255);
    border-radius: 3px 3px 3px 3px;
    border: 1px solid rgb(219, 209, 209);
-   
 }
 
 .char > button {

@@ -20,13 +20,14 @@ var Aufgabe07;
         button.setAttribute("index", i.toString());
         button.addEventListener("click", handleDeleteFromCart);
         cartDiv.appendChild(button);
-        cartSum += +localStorage.getItem("preis" + i);
+        cartSum += +localStorage.getItem("preis" + i); //Gesamtsumme
         console.log("Im Warenkorb: " + localStorage.getItem("name" + i));
     }
-    let summe = document.createElement("h3");
+    let summe = document.createElement("h3"); //Gesamtsumme
     summe.innerHTML = "Summe: " + cartSum.toFixed(2) + " €";
     document.getElementById("korbinhalt")?.appendChild(summe);
     let buttonAll = document.createElement("button"); //Button
+    buttonAll.id = "deleteAll";
     buttonAll.innerHTML = "alles löschen";
     buttonAll.addEventListener("click", handleDeleteWholeCart);
     document.getElementById("korbinhalt")?.appendChild(buttonAll);
