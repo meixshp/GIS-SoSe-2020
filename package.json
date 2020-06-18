@@ -1,0 +1,21 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "server help",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgabe08/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meixshp/GIS-SoSe-2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meixshp/GIS-SoSe-2020/issues"
+  },
+  "homepage": "https://github.com/meixshp/GIS-SoSe-2020#readme"
+}
