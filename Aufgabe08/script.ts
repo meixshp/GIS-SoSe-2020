@@ -3,9 +3,9 @@ namespace Aufgabe08 {
     let submit: HTMLElement = <HTMLElement> document.getElementById("button");
     submit.addEventListener("click", hdlCommunicate);
 
-    async function hdlCommunicate(): Promise<void> {
+    let formData: FormData = new FormData(document.forms[0]);
 
-        let formData: FormData = new FormData(document.forms[0]);
+    async function hdlCommunicate(): Promise<void> {
 
         let url: string = "https://jiaies2020.herokuapp.com";
         // tslint:disable-next-line: no-any
