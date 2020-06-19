@@ -4,24 +4,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="server.js" defer></script>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>Formular</title>
 </head>
 
 <body>
 
-  <h2>HTML Forms</h2>
+  <h2>html forms</h2>
 
-  <form>
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="May"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Naub"><br><br>
+  <form action="https://jiaies2020.herokuapp.com", method="GET">
+    <label for="fname">first name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">last name:</label><br>
+    <input type="text" id="lname" name="lname"><br><br>
     <input type="submit" id="button" value="Submit" >
   </form> 
-
-  <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
 
 </body>
 </html>
