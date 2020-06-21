@@ -11,7 +11,7 @@ namespace Aufgabe08 {
         url += url + "?" + query.toString();
 
         let response: Response = await fetch(url);
-        //let requestURL: string = await response.url;
+        // let requestURL: string = await response.url;
         console.log(response.text);
         
         /*for (let entry of formData) {
