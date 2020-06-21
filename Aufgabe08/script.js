@@ -10,7 +10,7 @@ var Aufgabe08;
         let query = new URLSearchParams(formData);
         url += url + "?" + query.toString();
         let response = await fetch(url);
-        //let requestURL = await response.url;
+        // let requestURL = await response.url;
         console.log(response.text);
         /*for (let entry of formData) {
             console.log(entry);
