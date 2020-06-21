@@ -1,6 +1,6 @@
 namespace Aufgabe08 {
 
-    let submit: HTMLElement = <HTMLElement> document.getElementById("button");
+    let submit: HTMLButtonElement = <HTMLButtonElement> document.getElementById("button");
     submit.addEventListener("click", hdlCommunicate);
 
     let formData: FormData = new FormData(document.forms[0]);
