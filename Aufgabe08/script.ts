@@ -5,10 +5,10 @@ namespace Aufgabe08 {
 
     async function hdlCommunicate(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "https://jiaies2020.herokuapp.com";
+        let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += url + "?" + query.toString();
+        url = url + "?" + query.toString();
 
         let response: Response = await fetch(url);
         // let requestURL: string = await response.url;
