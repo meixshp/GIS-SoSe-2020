@@ -9,6 +9,7 @@ namespace Aufgabe08 {
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url = url + "?" + query.toString();
+        console.log(url);
 
         let response: Response = await fetch(url);
         // let requestURL: string = await response.url;
