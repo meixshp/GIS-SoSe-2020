@@ -9,6 +9,7 @@ var Aufgabe08;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
+        console.log(url);
         let response = await fetch(url);
         // let requestURL = await response.url;
         console.log(response.text);
