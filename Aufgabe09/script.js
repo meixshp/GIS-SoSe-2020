@@ -7,12 +7,12 @@ var Aufgabe09;
     jsonbttn.addEventListener("click", hdlJSONButton);
     let formData = new FormData(document.forms[0]);
     let url = "https://jiaies2020.herokuapp.com/";
-    // tslint:disable-next-line: no-any
-    let query = new URLSearchParams(formData);
-    url = url + "?" + query.toString();
     async function hdlHTMLButton() {
         url += "html";
         console.log(url);
+        // tslint:disable-next-line: no-any
+        let query = new URLSearchParams(formData);
+        url = url + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.text();
         console.log(responseStr);
