@@ -10,7 +10,7 @@ namespace Aufgabe09 {
     let url: string = "https://jiaies2020.herokuapp.com/";
     
     
-    async function hdlHTMLButton(): Promise<void> {
+    async function hdlHTMLButton(_event: Event): Promise<void> {
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "html" + "?" + query.toString();
@@ -22,7 +22,7 @@ namespace Aufgabe09 {
         document.getElementById("answer")!.innerHTML = responseStr;
     }
 
-    async function hdlJSONButton(): Promise<void> {
+    async function hdlJSONButton(_event: Event): Promise<void> {
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "json" + "?" + query.toString();
