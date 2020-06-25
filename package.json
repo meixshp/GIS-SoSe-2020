@@ -4,9 +4,11 @@
   "description": "server help",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.0.13"
+  },
   "scripts": {
-    "start": "node Aufgabe08/server.js"
+    "start": "node Aufgabe09/server.js"
   },
   "repository": {
     "type": "git",
