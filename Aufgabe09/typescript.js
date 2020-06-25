@@ -26,4 +26,4 @@ var Aufgabe09;
         console.log(responseStr);
     }
 })(Aufgabe09 || (Aufgabe09 = {}));
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=typescript.js.map

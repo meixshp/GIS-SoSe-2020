@@ -10,7 +10,6 @@ namespace Aufgabe09 {
     let url: string = "https://jiaies2020.herokuapp.com/";
     
     
-
     async function hdlHTMLButton(): Promise<void> {
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
