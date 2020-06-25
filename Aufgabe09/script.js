@@ -8,20 +8,18 @@ var Aufgabe09;
     let formData = new FormData(document.forms[0]);
     let url = "https://jiaies2020.herokuapp.com/";
     async function hdlHTMLButton() {
-        url += "html";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        url = url + "?" + query.toString();
+        url += "html" + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.text();
         //zur DOM hinzufügen
         document.getElementById("answer").innerHTML = responseStr;
     }
     async function hdlJSONButton() {
-        url += "json";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        url = url + "?" + query.toString();
+        url += "json" + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.json();
         //Konsolenausgabe
