@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+input {
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid rgb(219, 209, 209);
+    background-color: rgb(241, 233, 252);
+}
