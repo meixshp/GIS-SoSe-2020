@@ -13,14 +13,12 @@ namespace Aufgabe09 {
 
     async function hdlHTMLButton(): Promise<void> {
         url += "html";
-        console.log(url);
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url = url + "?" + query.toString();
         
         let response: Response = await fetch(url);
         let responseStr: string = await response.text();
-        console.log(responseStr);
 
         //zur DOM hinzufügen
         document.getElementById("answer")!.innerHTML = responseStr;
@@ -28,7 +26,9 @@ namespace Aufgabe09 {
 
     async function hdlJSONButton(): Promise<void> {
         url += "json";
-        console.log(url);
+        // tslint:disable-next-line: no-any
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+        url = url + "?" + query.toString();
 
         let response: Response = await fetch(url);
         let responseStr: string = await response.json();

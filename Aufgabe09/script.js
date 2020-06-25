@@ -9,19 +9,19 @@ var Aufgabe09;
     let url = "https://jiaies2020.herokuapp.com/";
     async function hdlHTMLButton() {
         url += "html";
-        console.log(url);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.text();
-        console.log(responseStr);
         //zur DOM hinzufügen
         document.getElementById("answer").innerHTML = responseStr;
     }
     async function hdlJSONButton() {
         url += "json";
-        console.log(url);
+        // tslint:disable-next-line: no-any
+        let query = new URLSearchParams(formData);
+        url = url + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.json();
         //Konsolenausgabe

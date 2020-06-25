@@ -24,10 +24,9 @@ var Aufgabe09;
         if (_request.url) {
             let q = url.parse(_request.url, true);
             //für html-ausgabe später
-            if (q.pathname == "html") {
+            if (q.pathname == "/html") {
                 for (let key in q.query) {
                     _response.write(key + ": " + q.query[key] + "<br/>");
-                    console.log(_request.url);
                 }
             }
             //für json-konsolenausgabe später
