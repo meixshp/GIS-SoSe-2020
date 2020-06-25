@@ -17,7 +17,7 @@ namespace Aufgabe09 {
         let response: Response = await fetch(url);
         let responseStr: string = await response.text();
 
-        //zur DOM hinzufügen
+        //zur html hinzufügen
         document.getElementById("answer")!.innerHTML = responseStr;
     }
 

@@ -13,7 +13,7 @@ var Aufgabe09;
         url += "html" + "?" + query.toString();
         let response = await fetch(url);
         let responseStr = await response.text();
-        //zur DOM hinzufügen
+        //zur html hinzufügen
         document.getElementById("answer").innerHTML = responseStr;
     }
     async function hdlJSONButton(_event) {

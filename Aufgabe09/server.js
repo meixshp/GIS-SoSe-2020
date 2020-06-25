@@ -6,13 +6,13 @@ const url = require("url");
 var Aufgabe09;
 (function (Aufgabe09) {
     console.log("Starting server");
-    //localer Server wird aufgerufen
+    //lokaler Server wird aufgerufen
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
     let server = Http.createServer();
-    server.addListener("request", handleRequest); //anfrage wird gesendet
-    server.addListener("listening", handleListen); //beobachtet einfach
+    server.addListener("request", handleRequest);
+    server.addListener("listening", handleListen);
     server.listen(port);
     function handleListen() {
         console.log("Listening");
