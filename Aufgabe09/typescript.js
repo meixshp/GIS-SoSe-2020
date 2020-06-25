@@ -5,9 +5,9 @@ var Aufgabe09;
     htmlbttn.addEventListener("click", hdlHTMLButton);
     let jsonbttn = document.getElementById("buttonJSON");
     jsonbttn.addEventListener("click", hdlJSONButton);
-    let formData = new FormData(document.forms[0]);
-    let url = "https://jiaies2020.herokuapp.com/";
     async function hdlHTMLButton(_event) {
+        let formData = new FormData(document.forms[0]);
+        let url = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url += "html" + "?" + query.toString();
@@ -17,6 +17,8 @@ var Aufgabe09;
         document.getElementById("answer").innerHTML = responseStr;
     }
     async function hdlJSONButton(_event) {
+        let formData = new FormData(document.forms[0]);
+        let url = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url += "json" + "?" + query.toString();

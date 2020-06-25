@@ -5,12 +5,11 @@ namespace Aufgabe09 {
 
     let jsonbttn: HTMLButtonElement = <HTMLButtonElement> document.getElementById("buttonJSON");
     jsonbttn.addEventListener("click", hdlJSONButton);
-
-    let formData: FormData = new FormData(document.forms[0]);
-    let url: string = "https://jiaies2020.herokuapp.com/";
     
     
     async function hdlHTMLButton(_event: Event): Promise<void> {
+        let formData: FormData = new FormData(document.forms[0]);
+        let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "html" + "?" + query.toString();
@@ -23,6 +22,8 @@ namespace Aufgabe09 {
     }
 
     async function hdlJSONButton(_event: Event): Promise<void> {
+        let formData: FormData = new FormData(document.forms[0]);
+        let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "json" + "?" + query.toString();
