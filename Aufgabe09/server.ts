@@ -33,7 +33,7 @@ export namespace Aufgabe09 {
                 }
             }
             //für json-konsolenausgabe später
-            else {
+            else if (q.pathname == "/json") {
                 let jsonContent: string = JSON.stringify(q.query);
                 _response.write(jsonContent);
             }

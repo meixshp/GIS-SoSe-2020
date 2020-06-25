@@ -30,7 +30,7 @@ var Aufgabe09;
                 }
             }
             //für json-konsolenausgabe später
-            else {
+            else if (q.pathname == "/json") {
                 let jsonContent = JSON.stringify(q.query);
                 _response.write(jsonContent);
             }
