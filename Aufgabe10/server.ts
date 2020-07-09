@@ -68,6 +68,7 @@ export namespace Aufgabe10 {
                 
             //}        
             _response.write(jsonToString);
+            console.log("hat geklappt");
             _response.end();
         }
 

@@ -58,6 +58,7 @@ var Aufgabe10;
             //else if (q.pathname == "/delete") {
             //}        
             _response.write(jsonToString);
+            console.log("hat geklappt");
             _response.end();
         }
     }
