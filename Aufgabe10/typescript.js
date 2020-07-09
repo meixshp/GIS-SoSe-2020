@@ -22,7 +22,7 @@ var Aufgabe10;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url += "store" + "?" + query.toString();
-        document.getElementById("form").reset();
+        //(<HTMLElement> document.getElementById("form")).reset();
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=typescript.js.map
