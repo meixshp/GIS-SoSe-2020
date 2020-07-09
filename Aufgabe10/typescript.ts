@@ -8,11 +8,9 @@ namespace Aufgabe10 {
     
     
     async function hdlRetrieveButton(_event: Event): Promise<void> {
-        let formData: FormData = new FormData(document.forms[0]);
         let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += "retrieve" + "?" + query.toString();
+        url += "retrieve";
         
         let response: Response = await fetch(url);
         let responseStr: string = await response.text();
@@ -27,6 +25,7 @@ namespace Aufgabe10 {
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "store" + "?" + query.toString();
+        await fetch(url);
 
         //(<HTMLElement> document.getElementById("form")).reset();
     }

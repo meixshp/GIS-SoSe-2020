@@ -55,6 +55,7 @@ export namespace Aufgabe10 {
                         jsonToString += JSON.stringify(results[i]) + "<br>";
                     }
                     console.log(jsonToString);
+                    _response.write(jsonToString);
                 });
             }
             //um etwas hinzuzufügen
@@ -67,7 +68,7 @@ export namespace Aufgabe10 {
             //else if (q.pathname == "/delete") {
                 
             //}        
-            _response.write(jsonToString);
+            
             console.log("hat geklappt");
             _response.end();
         }
