@@ -46,6 +46,7 @@ var Aufgabe10;
                     for (let i = 0; i < results.length; i++) {
                         jsonToString += JSON.stringify(results[i]) + "<br>";
                     }
+                    console.log(jsonToString);
                 });
             }
             //um etwas hinzuzufügen

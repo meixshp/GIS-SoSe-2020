@@ -54,6 +54,7 @@ export namespace Aufgabe10 {
                     for (let i: number = 0; i < results.length; i++) {
                         jsonToString += JSON.stringify(results[i]) + "<br>";
                     }
+                    console.log(jsonToString);
                 });
             }
             //um etwas hinzuzufügen
