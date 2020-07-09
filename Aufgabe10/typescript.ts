@@ -27,6 +27,7 @@ namespace Aufgabe10 {
         url += "store" + "?" + query.toString();
         await fetch(url);
 
-        //(<HTMLElement> document.getElementById("form")).reset();
+        let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
+        resetForm.reset();
     }
 }

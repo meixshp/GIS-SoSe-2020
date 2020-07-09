@@ -30,7 +30,7 @@ export namespace Aufgabe10 {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("Test").collection("Students");
-        console.log("Connected!");
+        console.log("Connection ", orders != undefined);
     }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
@@ -40,27 +40,20 @@ export namespace Aufgabe10 {
 
         if (_request.url) {
             let q: url.UrlWithParsedQuery = url.parse(_request.url, true);
-            let jsonToString: string = "";
-            console.log("Connected1!");
 
             //um sich die vorhandenen Daten anzeigen zu lassen
             if (q.pathname == "/retrieve") {
-                console.log("Connected2!");
-
                 let storage: Mongo.Cursor<string> = orders.find();
                 let storageArray: string [] = await storage.toArray();
-                console.log(jsonToString);
                 _response.write(JSON.stringify(storageArray));
-        
             }
-            
+
             //um etwas hinzuzufügen
             else if (q.pathname == "/store") {
                 orders.insertOne(q.query);
-                console.log("Connected3!");
             }
 
-            console.log("hat geklappt");
+            console.log("Hat geklappt!");
             _response.end();
         }
     }

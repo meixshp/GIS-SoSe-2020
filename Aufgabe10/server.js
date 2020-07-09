@@ -26,7 +26,7 @@ var Aufgabe10;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("Test").collection("Students");
-        console.log("Connected!");
+        console.log("Connection ", orders != undefined);
     }
     async function handleRequest(_request, _response) {
         console.log("I hear voices!");
@@ -34,22 +34,17 @@ var Aufgabe10;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let q = url.parse(_request.url, true);
-            let jsonToString = "";
-            console.log("Connected1!");
             //um sich die vorhandenen Daten anzeigen zu lassen
             if (q.pathname == "/retrieve") {
-                console.log("Connected2!");
                 let storage = orders.find();
                 let storageArray = await storage.toArray();
-                console.log(jsonToString);
                 _response.write(JSON.stringify(storageArray));
             }
             //um etwas hinzuzufügen
             else if (q.pathname == "/store") {
                 orders.insertOne(q.query);
-                console.log("Connected3!");
             }
-            console.log("hat geklappt");
+            console.log("Hat geklappt!");
             _response.end();
         }
     }

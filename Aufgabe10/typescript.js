@@ -21,7 +21,8 @@ var Aufgabe10;
         let query = new URLSearchParams(formData);
         url += "store" + "?" + query.toString();
         await fetch(url);
-        //(<HTMLElement> document.getElementById("form")).reset();
+        let resetForm = document.getElementById("form");
+        resetForm.reset();
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=typescript.js.map
