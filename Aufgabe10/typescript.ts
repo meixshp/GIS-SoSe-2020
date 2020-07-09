@@ -24,9 +24,10 @@ namespace Aufgabe10 {
         let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += "store" + "?" + query.toString();
-        await fetch(url);
+        url += "store" + "?" + query.toString();      
 
+        await fetch(url); 
+              
         let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
         resetForm.reset();
     }
