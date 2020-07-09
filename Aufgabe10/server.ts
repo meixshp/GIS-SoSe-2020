@@ -33,45 +33,35 @@ export namespace Aufgabe10 {
         console.log("Connected!");
     }
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-
 
         if (_request.url) {
             let q: url.UrlWithParsedQuery = url.parse(_request.url, true);
             let jsonToString: string = "";
             console.log("Connected1!");
+
             //um sich die vorhandenen Daten anzeigen zu lassen
             if (q.pathname == "/retrieve") {
                 console.log("Connected2!");
-                // tslint:disable-next-line: typedef
-                orders.find().toArray(function(error: Mongo.MongoError, results: String[]) {
-                    if (error)  
-                        throw error;
 
-                    for (let i: number = 0; i < results.length; i++) {
-                        jsonToString += JSON.stringify(results[i]) + "<br>";
-                    }
-                    console.log(jsonToString);
-                    _response.write(jsonToString);
-                });
+                let storage: Mongo.Cursor<string> = orders.find();
+                let storageArray: string [] = await storage.toArray();
+                console.log(jsonToString);
+                _response.write(JSON.stringify(storageArray));
+        
             }
+            
             //um etwas hinzuzufügen
             else if (q.pathname == "/store") {
                 orders.insertOne(q.query);
                 console.log("Connected3!");
             }
 
-            //um Daten zu löschen
-            //else if (q.pathname == "/delete") {
-                
-            //}        
-            
             console.log("hat geklappt");
             _response.end();
         }
-
     }
 }

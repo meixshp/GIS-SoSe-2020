@@ -28,7 +28,7 @@ var Aufgabe10;
         orders = mongoClient.db("Test").collection("Students");
         console.log("Connected!");
     }
-    function handleRequest(_request, _response) {
+    async function handleRequest(_request, _response) {
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,25 +39,16 @@ var Aufgabe10;
             //um sich die vorhandenen Daten anzeigen zu lassen
             if (q.pathname == "/retrieve") {
                 console.log("Connected2!");
-                // tslint:disable-next-line: typedef
-                orders.find().toArray(function (error, results) {
-                    if (error)
-                        throw error;
-                    for (let i = 0; i < results.length; i++) {
-                        jsonToString += JSON.stringify(results[i]) + "<br>";
-                    }
-                    console.log(jsonToString);
-                    _response.write(jsonToString);
-                });
+                let storage = orders.find();
+                let storageArray = await storage.toArray();
+                console.log(jsonToString);
+                _response.write(JSON.stringify(storageArray));
             }
             //um etwas hinzuzufügen
             else if (q.pathname == "/store") {
                 orders.insertOne(q.query);
                 console.log("Connected3!");
             }
-            //um Daten zu löschen
-            //else if (q.pathname == "/delete") {
-            //}        
             console.log("hat geklappt");
             _response.end();
         }
