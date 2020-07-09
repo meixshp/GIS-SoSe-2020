@@ -28,7 +28,6 @@ namespace Aufgabe10 {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "store" + "?" + query.toString();
 
-        document.getElementById("form")!.reset();
-        await fetch(url);
+        (<HTMLElement> document.getElementById("form")).reset();
     }
 }

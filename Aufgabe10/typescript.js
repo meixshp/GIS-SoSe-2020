@@ -23,7 +23,6 @@ var Aufgabe10;
         let query = new URLSearchParams(formData);
         url += "store" + "?" + query.toString();
         document.getElementById("form").reset();
-        await fetch(url);
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=typescript.js.map
