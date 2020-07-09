@@ -30,6 +30,7 @@ export namespace Aufgabe10 {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("Test").collection("Students");
+        console.log("Connected!");
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
@@ -41,23 +42,24 @@ export namespace Aufgabe10 {
         if (_request.url) {
             let q: url.UrlWithParsedQuery = url.parse(_request.url, true);
             let jsonToString: string = "";
+            console.log("Connected1!");
             //um sich die vorhandenen Daten anzeigen zu lassen
             if (q.pathname == "/retrieve") {
+                console.log("Connected2!");
                 // tslint:disable-next-line: typedef
                 orders.find().toArray(function(error: Mongo.MongoError, results: String[]) {
-                    if (error) { 
-                        throw error; }
-                    
-                    else {
-                        for (let i: number = 0; i < results.length; i++) {
-                            jsonToString += JSON.stringify(results[i]) + "<br>";
-                        }
+                    if (error)  
+                        throw error;
+
+                    for (let i: number = 0; i < results.length; i++) {
+                        jsonToString += JSON.stringify(results[i]) + "<br>";
                     }
                 });
             }
             //um etwas hinzuzufügen
             else if (q.pathname == "/store") {
                 orders.insertOne(q.query);
+                console.log("Connected3!");
             }
 
             //um Daten zu löschen
