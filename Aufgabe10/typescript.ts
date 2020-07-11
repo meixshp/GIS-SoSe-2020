@@ -9,7 +9,6 @@ namespace Aufgabe10 {
     
     async function hdlRetrieveButton(_event: Event): Promise<void> {
         let url: string = "https://jiaies2020.herokuapp.com/";
-        // tslint:disable-next-line: no-any
         url += "retrieve";
         
         let response: Response = await fetch(url);

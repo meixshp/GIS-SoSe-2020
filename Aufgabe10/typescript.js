@@ -7,7 +7,6 @@ var Aufgabe10;
     storebttn.addEventListener("click", hdlStoreButton);
     async function hdlRetrieveButton(_event) {
         let url = "https://jiaies2020.herokuapp.com/";
-        // tslint:disable-next-line: no-any
         url += "retrieve";
         let response = await fetch(url);
         let responseStr = await response.text();
