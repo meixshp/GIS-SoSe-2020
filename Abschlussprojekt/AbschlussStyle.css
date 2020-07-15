@@ -1,0 +1,164 @@
+@media screen and (min-width: 1024px) {
+    #header > img {
+       margin-top: 30px;
+    }
+    #content {
+       width: 1200px;
+    }
+    button {
+       cursor: pointer;
+    }
+}
+ 
+@media screen and (max-width: 1024px) {
+    #header > img {
+       width: 400px;
+       margin-top: 30px;
+    }
+    #header > h2 {
+       font-size: 20px;
+    }
+}
+ 
+@media screen and (max-width: 600px) {  
+    #header > img {
+       width: 250px;
+       margin-top: 30px;
+    }
+    #header > h2 {
+       font-size: 18px;
+    }
+}
+ 
+body {
+    background: url(bg1.png);
+    font-family: Rajdhani;
+    font-size: 15px;
+    margin: auto auto auto auto;
+
+}
+
+header {
+    width: 98%; 
+    height: 70px;
+    background-color: #DCEFC5;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    float: right;
+    margin: 20px;
+    margin-top: -50px;
+}
+
+hr + div {
+    margin: 20px;
+    margin-top: 230px;
+    margin-left: 140px;
+    position: absolute;
+    background-color: #DCEFC5;
+    padding: 15px;
+}
+
+#center, #center2{
+    margin: auto;   
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 20px;
+}
+
+#center2 {
+    width: 800px;
+}
+
+#center > div {
+    position: absolute;
+    width: 270px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #E9F0F4;
+} 
+
+#center2 ~ div {
+    margin-top: -300px;
+    margin-right: 50px;
+}
+ 
+#chatverlauf {
+    background-color: #E9F0F4; 
+    height: 70%; 
+    width: 100%;
+    height: 470px;
+    overflow-y: scroll;
+}
+
+.row {
+    width: 780px;
+    min-height: 100px;
+}
+
+.row > div{
+    background-color: white; 
+    padding: 5px;
+    padding-left: 10px;
+    max-width: 55%;
+    min-height: 70px;
+    margin: 10px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #C5C5C5;
+    text-align: left
+}
+
+span {
+    float: right;
+    margin-top: -50px;
+    cursor: pointer;
+}
+
+.messageByOthers {
+    float: left;
+}
+
+.messageByMe {
+    float: right;
+}
+
+.row > div > h4 {
+    margin-top: 5px;
+}
+
+#typemessage {
+    background-color: #DCEFC5;
+    width: 100%;
+    height: 75px;
+    border: 1px solid #C5C5C5;
+}
+
+#password {
+    margin-bottom: 15px;  
+}
+
+#messagebox {
+    width: 80%; 
+    height: 50px;
+    margin-top: 10px;
+    margin-right: 20px
+}
+
+
+
+footer {
+    font-size: 12px;
+    text-align: center;
+    background-color: #E7E7E7;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
