@@ -13,7 +13,7 @@ var Chatrooms;
     let where = "";
     document.getElementById("who").innerHTML = "" + currentUser;
     async function hdlChatroom1(_event) {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
@@ -23,7 +23,7 @@ var Chatrooms;
         }
     }
     async function hdlChatroom2(_event) {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;
@@ -57,7 +57,7 @@ var Chatrooms;
         chatBox.scrollTop = chatBox.scrollHeight;
     }
     async function hdlSendMsg(_event) {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let formData = new FormData(document.forms[0]);
             let url = "https://jiaies2020.herokuapp.com/";
             // tslint:disable-next-line: no-any
@@ -69,6 +69,7 @@ var Chatrooms;
         }
     }
     function hdlLogout(_event) {
+        localStorage.clear();
         window.location.href = "Login.html";
     }
 })(Chatrooms || (Chatrooms = {}));

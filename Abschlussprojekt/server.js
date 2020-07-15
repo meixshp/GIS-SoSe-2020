@@ -46,36 +46,37 @@ var Chatrooms;
             }
             //User hinzufügen
             else if (q.pathname == "/register") {
-                //if (orders1.findOne(q.query)) 
-                //    _response.write("false");
-                //else {
-                orders1.insertOne(q.query);
-                _response.write("true");
+                if (orders1.findOne({ username: q.query.username }))
+                    _response.write("false");
+                else {
+                    orders1.insertOne(q.query);
+                    _response.write("true");
+                }
             }
+            //Nachrichten Chatroom 1
+            else if (q.pathname == "/chatroom1") {
+                _response.write(JSON.stringify(await receiveData(orders2)));
+            }
+            //Nachrichten Chatroom 2
+            else if (q.pathname == "/chatroom2") {
+                _response.write(JSON.stringify(await receiveData(orders3)));
+            }
+            //senden
+            else if (q.pathname == "/sendchatroom1") {
+                orders2.insertOne(q.query);
+            }
+            else if (q.pathname == "/sendchatroom2") {
+                orders3.insertOne(q.query);
+            }
+            console.log("Hat geklappt!");
+            _response.end();
         }
-        //Nachrichten Chatroom 1
-        else if (q.pathname == "/chatroom1") {
-            _response.write(JSON.stringify(await receiveData(orders2)));
-        }
-        //Nachrichten Chatroom 2
-        else if (q.pathname == "/chatroom2") {
-            _response.write(JSON.stringify(await receiveData(orders3)));
-        }
-        //senden
-        else if (q.pathname == "/sendchatroom1") {
-            orders2.insertOne(q.query);
-        }
-        else if (q.pathname == "/sendchatroom2") {
-            orders3.insertOne(q.query);
-        }
-        console.log("Hat geklappt!");
-        _response.end();
+    }
+    //sucht nach Daten in der Datenbank
+    async function receiveData(_orders) {
+        let storage = _orders.find();
+        storageArray = await storage.toArray();
+        return storageArray;
     }
 })(Chatrooms = exports.Chatrooms || (exports.Chatrooms = {}));
-//sucht nach Daten in der Datenbank
-async function receiveData(_orders) {
-    let storage = _orders.find();
-    storageArray = await storage.toArray();
-    return storageArray;
-}
 //# sourceMappingURL=server.js.map

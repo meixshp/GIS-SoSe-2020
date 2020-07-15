@@ -24,7 +24,7 @@ namespace Chatrooms {
     document.getElementById("who")!.innerHTML = "" + currentUser;
     
     async function hdlChatroom1(_event: Event): Promise<void> {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
@@ -37,7 +37,7 @@ namespace Chatrooms {
     }
 
     async function hdlChatroom2(_event: Event): Promise<void> {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;
@@ -82,7 +82,7 @@ namespace Chatrooms {
     }
 
     async function hdlSendMsg(_event: Event): Promise<void> {
-        if (localStorage) {
+        if (localStorage.getItem("username") != null) {
             let formData: FormData = new FormData(document.forms[0]);
             let url: string = "https://jiaies2020.herokuapp.com/";
             // tslint:disable-next-line: no-any
@@ -97,6 +97,7 @@ namespace Chatrooms {
     }
 
     function hdlLogout(_event: Event): void {
+        localStorage.clear();
         window.location.href = "Login.html";
     }
 
