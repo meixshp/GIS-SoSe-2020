@@ -19,11 +19,12 @@ var Chatrooms;
     }
     let databaseURL = "mongodb+srv://jiaiesNewuser:jiaiesNewuserpw@gisgehtab.9jp9v.mongodb.net/Chat?retryWrites=true&w=majority";
     let orders;
-    let options = { useNewUrlParser: true, useUnifiedTopology: true };
-    let mongoClient = new Mongo.MongoClient(databaseURL, options);
-    connect();
-    async function connect() {
+    connect("User");
+    async function connect(_collection) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(databaseURL, options);
         await mongoClient.connect();
+        orders = mongoClient.db("Chat").collection("_collection");
         console.log("Connection ", orders != undefined);
     }
     let storageArray = [];
@@ -35,7 +36,6 @@ var Chatrooms;
             let q = url.parse(_request.url, true);
             //Login
             if (q.pathname == "/login") {
-                orders = mongoClient.db("Chat").collection("User");
                 if (orders.findOne(q.query))
                     _response.write("true");
                 else
@@ -43,7 +43,6 @@ var Chatrooms;
             }
             //User hinzufügen
             else if (q.pathname == "/register") {
-                orders = mongoClient.db("Chat").collection("User");
                 if (orders.findOne(q.query))
                     _response.write("false");
                 else {
@@ -53,21 +52,21 @@ var Chatrooms;
             }
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
-                orders = mongoClient.db("Chat").collection("Chatroom1");
+                connect("Chatroom1");
                 _response.write(JSON.stringify(await receiveData()));
             }
             //Nachrichten Chatroom 2
             else if (q.pathname == "/chatroom2") {
-                orders = mongoClient.db("Chat").collection("Chatroom2");
+                connect("Chatroom2");
                 _response.write(JSON.stringify(await receiveData()));
             }
             //senden
             else if (q.pathname == "/sendchatroom1") {
-                orders = mongoClient.db("Chat").collection("Chatroom1");
+                connect("Chatroom1");
                 orders.insertOne(q.query);
             }
             else if (q.pathname == "/sendchatroom2") {
-                orders = mongoClient.db("Chat").collection("Chatroom2");
+                connect("Chatroom2");
                 orders.insertOne(q.query);
             }
             console.log("Hat geklappt!");

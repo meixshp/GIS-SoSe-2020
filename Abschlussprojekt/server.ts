@@ -20,14 +20,16 @@ export namespace Chatrooms {
     }
 
     let databaseURL: string = "mongodb+srv://jiaiesNewuser:jiaiesNewuserpw@gisgehtab.9jp9v.mongodb.net/Chat?retryWrites=true&w=majority";
-    
-    let orders: Mongo.Collection;
-    let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
-    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseURL, options);
 
-    connect();
-    async function connect(): Promise<void> {
+    let orders: Mongo.Collection;
+
+    connect("User");
+    async function connect(_collection: string): Promise<void> {    
+        
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseURL, options);
         await mongoClient.connect();
+        orders = mongoClient.db("Chat").collection("_collection");
         console.log("Connection ", orders != undefined);
     }
 
@@ -44,7 +46,6 @@ export namespace Chatrooms {
 
             //Login
             if (q.pathname == "/login") {
-                orders = mongoClient.db("Chat").collection("User");
                 if (orders.findOne(q.query))
                     _response.write("true");
                 else 
@@ -53,8 +54,6 @@ export namespace Chatrooms {
 
             //User hinzufügen
             else if (q.pathname == "/register") {
-                orders = mongoClient.db("Chat").collection("User");
-
                 if (orders.findOne(q.query)) 
                     _response.write("false");
                 else {
@@ -65,24 +64,24 @@ export namespace Chatrooms {
 
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
-                orders = mongoClient.db("Chat").collection("Chatroom1");
+                connect("Chatroom1");
                 _response.write(JSON.stringify(await receiveData()));
             }
             
             //Nachrichten Chatroom 2
             else if (q.pathname == "/chatroom2") {
-                orders = mongoClient.db("Chat").collection("Chatroom2");   
+                connect("Chatroom2"); 
                 _response.write(JSON.stringify(await receiveData()));
             }
             
             //senden
             else if (q.pathname == "/sendchatroom1") {
-                orders = mongoClient.db("Chat").collection("Chatroom1");  
+                connect("Chatroom1");
                 orders.insertOne(q.query);
             }
 
             else if (q.pathname == "/sendchatroom2") {
-                orders = mongoClient.db("Chat").collection("Chatroom2");  
+                connect("Chatroom2");
                 orders.insertOne(q.query);
             }
 
