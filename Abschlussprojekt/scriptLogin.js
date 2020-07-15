@@ -30,8 +30,6 @@ var Chatrooms;
         url += "register" + "?" + query.toString();
         let userRegister = await fetch(url);
         let userRegisterString = await userRegister.text();
-        //let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
-        //resetForm.reset();
         if (userRegisterString == "true") {
             console.log("Erfolgreiche Registrierung!");
             alert("Deine Registrierung war erfolgreich!");

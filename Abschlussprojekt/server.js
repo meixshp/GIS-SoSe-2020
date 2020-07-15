@@ -46,12 +46,12 @@ var Chatrooms;
             }
             //User hinzufügen
             else if (q.pathname == "/register") {
-                if (orders1.findOne({ username: q.query.username }))
-                    _response.write("false");
-                else {
-                    orders1.insertOne(q.query);
-                    _response.write("true");
-                }
+                //if (orders1.findOne({username: q.query.username})) 
+                //    _response.write("false");
+                //else {
+                orders1.insertOne(q.query);
+                _response.write("true");
+                //} 
             }
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
@@ -68,9 +68,9 @@ var Chatrooms;
             else if (q.pathname == "/sendchatroom2") {
                 orders3.insertOne(q.query);
             }
-            console.log("Hat geklappt!");
-            _response.end();
         }
+        console.log("Hat geklappt!");
+        _response.end();
     }
     //sucht nach Daten in der Datenbank
     async function receiveData(_orders) {
