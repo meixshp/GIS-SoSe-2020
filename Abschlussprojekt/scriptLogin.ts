@@ -36,8 +36,8 @@ namespace Chatrooms {
         let userRegister: Response = await fetch(url);
         let userRegisterString: string = await userRegister.text();
               
-        let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
-        resetForm.reset();
+        //let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
+        //resetForm.reset();
 
         if (userRegisterString == "true") {
             console.log("Erfolgreiche Registrierung!");
