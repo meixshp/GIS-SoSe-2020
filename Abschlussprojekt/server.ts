@@ -21,22 +21,25 @@ export namespace Chatrooms {
 
     let databaseURL: string = "mongodb+srv://jiaiesNewuser:jiaiesNewuserpw@gisgehtab.9jp9v.mongodb.net/Chat?retryWrites=true&w=majority";
 
-    let orders: Mongo.Collection;
+    let orders1: Mongo.Collection;
+    let orders2: Mongo.Collection;
+    let orders3: Mongo.Collection;
 
-    connect("User");
-    async function connect(_collection: string): Promise<void> {    
+    connect();
+    async function connect(): Promise<void> {    
         
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseURL, options);
         await mongoClient.connect();
-        orders = mongoClient.db("Chat").collection("_collection");
-        console.log("Connection ", orders != undefined);
+        orders1 = mongoClient.db("Chat").collection("User");
+        orders2 = mongoClient.db("Chat").collection("Chatroom1");
+        orders3 = mongoClient.db("Chat").collection("Chatroom2");
+        console.log("Connection ", orders1 != undefined);
     }
 
     let storageArray: string [] = []; 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
 
@@ -46,7 +49,7 @@ export namespace Chatrooms {
 
             //Login
             if (q.pathname == "/login") {
-                if (orders.findOne(q.query))
+                if (orders1.findOne(q.query))
                     _response.write("true");
                 else 
                     _response.write("false");
@@ -54,35 +57,31 @@ export namespace Chatrooms {
 
             //User hinzufügen
             else if (q.pathname == "/register") {
-                if (orders.findOne(q.query)) 
+                if (orders1.findOne(q.query)) 
                     _response.write("false");
                 else {
-                    orders.insertOne(q.query);
+                    orders1.insertOne(q.query);
                     _response.write("true");
                 } 
             }              
 
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
-                connect("Chatroom1");
-                _response.write(JSON.stringify(await receiveData()));
+                _response.write(JSON.stringify(await receiveData(orders2)));
             }
             
             //Nachrichten Chatroom 2
             else if (q.pathname == "/chatroom2") {
-                connect("Chatroom2"); 
-                _response.write(JSON.stringify(await receiveData()));
+                _response.write(JSON.stringify(await receiveData(orders3)));
             }
             
             //senden
             else if (q.pathname == "/sendchatroom1") {
-                connect("Chatroom1");
-                orders.insertOne(q.query);
+                orders2.insertOne(q.query);
             }
 
             else if (q.pathname == "/sendchatroom2") {
-                connect("Chatroom2");
-                orders.insertOne(q.query);
+                orders3.insertOne(q.query);
             }
 
             console.log("Hat geklappt!");
@@ -91,10 +90,9 @@ export namespace Chatrooms {
     }
 
     //sucht nach Daten in der Datenbank
-    async function receiveData(): Promise<string[]> {
-        let storage: Mongo.Cursor<string> = orders.find();
+    async function receiveData(_orders: Mongo.Collection): Promise<string[]> {
+        let storage: Mongo.Cursor<string> = _orders.find();
         storageArray = await storage.toArray();
         return storageArray;
     }
-
 }

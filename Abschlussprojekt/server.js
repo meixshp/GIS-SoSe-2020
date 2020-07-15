@@ -18,64 +18,63 @@ var Chatrooms;
         console.log("Listening");
     }
     let databaseURL = "mongodb+srv://jiaiesNewuser:jiaiesNewuserpw@gisgehtab.9jp9v.mongodb.net/Chat?retryWrites=true&w=majority";
-    let orders;
-    connect("User");
-    async function connect(_collection) {
+    let orders1;
+    let orders2;
+    let orders3;
+    connect();
+    async function connect() {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(databaseURL, options);
         await mongoClient.connect();
-        orders = mongoClient.db("Chat").collection("_collection");
-        console.log("Connection ", orders != undefined);
+        orders1 = mongoClient.db("Chat").collection("User");
+        orders2 = mongoClient.db("Chat").collection("Chatroom1");
+        orders3 = mongoClient.db("Chat").collection("Chatroom2");
+        console.log("Connection ", orders1 != undefined);
     }
     let storageArray = [];
     async function handleRequest(_request, _response) {
-        console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let q = url.parse(_request.url, true);
             //Login
             if (q.pathname == "/login") {
-                if (orders.findOne(q.query))
+                if (orders1.findOne(q.query))
                     _response.write("true");
                 else
                     _response.write("false");
             }
             //User hinzufügen
             else if (q.pathname == "/register") {
-                if (orders.findOne(q.query))
+                if (orders1.findOne(q.query))
                     _response.write("false");
                 else {
-                    orders.insertOne(q.query);
+                    orders1.insertOne(q.query);
                     _response.write("true");
                 }
             }
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
-                connect("Chatroom1");
-                _response.write(JSON.stringify(await receiveData()));
+                _response.write(JSON.stringify(await receiveData(orders2)));
             }
             //Nachrichten Chatroom 2
             else if (q.pathname == "/chatroom2") {
-                connect("Chatroom2");
-                _response.write(JSON.stringify(await receiveData()));
+                _response.write(JSON.stringify(await receiveData(orders3)));
             }
             //senden
             else if (q.pathname == "/sendchatroom1") {
-                connect("Chatroom1");
-                orders.insertOne(q.query);
+                orders2.insertOne(q.query);
             }
             else if (q.pathname == "/sendchatroom2") {
-                connect("Chatroom2");
-                orders.insertOne(q.query);
+                orders3.insertOne(q.query);
             }
             console.log("Hat geklappt!");
             _response.end();
         }
     }
     //sucht nach Daten in der Datenbank
-    async function receiveData() {
-        let storage = orders.find();
+    async function receiveData(_orders) {
+        let storage = _orders.find();
         storageArray = await storage.toArray();
         return storageArray;
     }
