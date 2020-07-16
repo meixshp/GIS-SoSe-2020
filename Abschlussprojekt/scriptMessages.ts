@@ -23,8 +23,6 @@ namespace Chatrooms {
     let where: string = "";
 
     document.getElementById("who")!.innerHTML = "" + currentUser + "&nbsp;&nbsp;";
-
-    let msg: Messages[] = [];
     
     async function hdlChatroom1(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
@@ -39,10 +37,10 @@ namespace Chatrooms {
             url += where;
             
             let response: Response = await fetch(url);
-            msg = await response.json();
+            let msg: Messages[] = await response.json();
 
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 5000, url);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
@@ -60,10 +58,10 @@ namespace Chatrooms {
             url += where;
             
             let response: Response = await fetch(url);
-            msg = await response.json();
+            let msg: Messages[] = await response.json();
 
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 5000, url);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
@@ -109,14 +107,15 @@ namespace Chatrooms {
         }
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    async function hdlCheck4NewMsg(_url: string): Promise<void> {
+    
+    let add: number = 0;
+    async function hdlCheck4NewMsg(_msg: Messages[], _url: string): Promise<void> {
         let response: Response = await fetch(_url);
         let msgNew: Messages[] = await response.json();
-        if (msg.length != msgNew.length) {                          //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
-            hdlCreateChatbox(msgNew.slice(msg.length));    	        //alte Nachrichten werden aus dem neuen Array entfernt
-            msg = msgNew;
-        } 
+        if (_msg.length + add != msgNew.length) {                        //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+            hdlCreateChatbox(msgNew.slice(_msg.length + add));          	     //alte Nachrichten werden aus dem neuen Array entfernt
+            add += (msgNew.slice(_msg.length + add)).length;
+        }
     }
 
     function hdlLogout(_event: Event): void {
