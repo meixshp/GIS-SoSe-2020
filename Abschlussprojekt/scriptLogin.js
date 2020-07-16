@@ -34,6 +34,8 @@ var Chatrooms;
             console.log("Erfolgreiche Registrierung!");
             alert("Deine Registrierung war erfolgreich!");
         }
+        else
+            alert("Der Nutzername ist schon vergeben.");
     }
 })(Chatrooms || (Chatrooms = {}));
 //# sourceMappingURL=scriptLogin.js.map
