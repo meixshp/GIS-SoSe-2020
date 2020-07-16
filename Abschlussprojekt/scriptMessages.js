@@ -24,7 +24,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            hdlCreateChatbox(msg);
+            setInterval(hdlCreateChatbox, 5000, msg);
         }
     }
     async function hdlChatroom2(_event) {
@@ -37,7 +37,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            hdlCreateChatbox(msg);
+            setInterval(hdlCreateChatbox, 5000, msg);
         }
     }
     function hdlCreateChatbox(_msg) {
@@ -61,7 +61,6 @@ var Chatrooms;
             chatBox.appendChild(row);
         }
         chatBox.scrollTop = chatBox.scrollHeight;
-        setTimeout(hdlCreateChatbox, 5000);
     }
     async function hdlSendMsg(_event) {
         if (localStorage.getItem("username") != null) {

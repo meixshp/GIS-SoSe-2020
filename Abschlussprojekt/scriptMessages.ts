@@ -40,7 +40,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            hdlCreateChatbox(msg);
+            setInterval(hdlCreateChatbox, 5000, msg);
         }
     }
 
@@ -58,7 +58,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            hdlCreateChatbox(msg);
+            setInterval(hdlCreateChatbox, 5000, msg);
         }
     }
 
@@ -89,7 +89,6 @@ namespace Chatrooms {
             chatBox.appendChild(row);
         }
         chatBox.scrollTop = chatBox.scrollHeight;
-        setTimeout(hdlCreateChatbox, 5000);
     }
 
     async function hdlSendMsg(_event: Event): Promise<void> {
