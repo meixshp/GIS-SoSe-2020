@@ -39,7 +39,7 @@ var Chatrooms;
             let q = url.parse(_request.url, true);
             //Login
             if (q.pathname == "/login") {
-                if (await orders1.findOne({ where: { username: q.query.username, password: q.query.password } }))
+                if (await orders1.findOne({ username: q.query.username, password: q.query.password }))
                     _response.write("true");
                 else
                     _response.write("false");
