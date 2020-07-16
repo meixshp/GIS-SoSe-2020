@@ -113,7 +113,11 @@ namespace Chatrooms {
         let msgNew: Messages[] = await response.json();
         if (_msg.length != msgNew.length) {                          //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
             hdlCreateChatbox(msgNew.slice(_msg.length));    	    //alte Nachrichten werden aus dem neuen Array entfernt
+            console.log(msgNew);
+            console.log(_msg);
             _msg = msgNew;
+            console.log(msgNew);
+            console.log(_msg);
         }
         setInterval(hdlCheck4NewMsg, 5000, _msg, _url);
     }
