@@ -82,9 +82,10 @@ var Chatrooms;
     async function hdlCheck4NewMsg(_url) {
         let response = await fetch(_url);
         let msgNew = await response.json();
-        if (msg.length != msgNew.length) //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+        if (msg.length != msgNew.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
             hdlCreateChatbox(msgNew.slice(msg.length)); //alte Nachrichten werden aus dem neuen Array entfernt
-        msg = msgNew;
+            msg = msgNew;
+        }
     }
     function hdlLogout(_event) {
         localStorage.clear();
