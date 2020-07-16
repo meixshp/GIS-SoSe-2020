@@ -69,7 +69,6 @@ namespace Chatrooms {
         for (let i: number = 0; i < _msg.length; i++) {
             let row: HTMLDivElement = document.createElement("div");  
             row.setAttribute("class", "row");
-            row.id = "row" + i;
 
             let div: HTMLDivElement = document.createElement("div");
             row.appendChild(div);              
@@ -130,7 +129,7 @@ namespace Chatrooms {
         
             await fetch(url);
 
-            (target.parentNode)!.firstChild!.remove();
+            (target.parentElement)!.remove();
         }
     }
 

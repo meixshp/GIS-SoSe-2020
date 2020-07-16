@@ -46,7 +46,6 @@ var Chatrooms;
         for (let i = 0; i < _msg.length; i++) {
             let row = document.createElement("div");
             row.setAttribute("class", "row");
-            row.id = "row" + i;
             let div = document.createElement("div");
             row.appendChild(div);
             let h4 = document.createElement("h4"); //Name
@@ -93,7 +92,7 @@ var Chatrooms;
             let url = "https://jiaies2020.herokuapp.com/";
             url += "delete" + where + "?" + "_id=" + id;
             await fetch(url);
-            (target.parentNode).firstChild.remove();
+            (target.parentElement).remove();
         }
     }
     function hdlLogout(_event) {
