@@ -23,6 +23,7 @@ namespace Chatrooms {
     let where: string = "";
 
     document.getElementById("who")!.innerHTML = "" + currentUser + "&nbsp;&nbsp;";
+    let add: number;
     
     async function hdlChatroom1(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
@@ -39,6 +40,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
+            add = 0;
             hdlCreateChatbox(msg);
             setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
@@ -60,6 +62,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
+            add = 0;
             hdlCreateChatbox(msg);
             setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
@@ -108,7 +111,7 @@ namespace Chatrooms {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
     
-    let add: number = 0;
+    
     async function hdlCheck4NewMsg(_msg: Messages[], _url: string): Promise<void> {
         let response: Response = await fetch(_url);
         let msgNew: Messages[] = await response.json();

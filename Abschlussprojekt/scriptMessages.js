@@ -13,6 +13,7 @@ var Chatrooms;
     let currentUser = "" + localStorage.getItem("username");
     let where = "";
     document.getElementById("who").innerHTML = "" + currentUser + "&nbsp;&nbsp;";
+    let add;
     async function hdlChatroom1(_event) {
         if (localStorage.getItem("username") != null) {
             //Löschen des vorherigen Chats
@@ -24,6 +25,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
+            add = 0;
             hdlCreateChatbox(msg);
             setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
@@ -40,6 +42,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
+            add = 0;
             hdlCreateChatbox(msg);
             setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
@@ -78,7 +81,6 @@ var Chatrooms;
         }
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-    let add = 0;
     async function hdlCheck4NewMsg(_msg, _url) {
         let response = await fetch(_url);
         let msgNew = await response.json();
