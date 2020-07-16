@@ -46,12 +46,12 @@ var Chatrooms;
             }
             //User hinzufügen
             else if (q.pathname == "/register") {
-                //if (orders1.findOne({username: q.query.username})) 
-                //    _response.write("false");
-                //else {
-                orders1.insertOne(q.query);
-                _response.write("true");
-                //} 
+                if (orders1.findOne({ username: q.query.username }))
+                    _response.write("false");
+                else {
+                    orders1.insertOne(q.query);
+                    _response.write("true");
+                }
             }
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
