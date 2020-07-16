@@ -9,35 +9,38 @@ var Chatrooms;
     sendbttn.addEventListener("click", hdlSendMsg);
     let logoutbttn = document.getElementById("logout");
     logoutbttn.addEventListener("click", hdlLogout);
+    let chatBox = document.getElementById("chatbox");
     let currentUser = "" + localStorage.getItem("username");
     let where = "";
     document.getElementById("who").innerHTML = "" + currentUser + "&nbsp;&nbsp;";
     async function hdlChatroom1(_event) {
         if (localStorage.getItem("username") != null) {
-            document.getElementById("info").setAttribute("style", "display:none");
+            //Löschen des vorherigen Chats
+            while (chatBox.firstChild) {
+                chatBox.firstChild.remove();
+            }
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            console.log(msg);
-            setTimeout(hdlCreateChatbox, 5000, msg);
-            //hdlCreateChatbox(msg);
+            hdlCreateChatbox(msg);
         }
     }
     async function hdlChatroom2(_event) {
         if (localStorage.getItem("username") != null) {
-            document.getElementById("info").setAttribute("style", "display:none");
+            while (chatBox.firstChild) {
+                chatBox.firstChild.remove();
+            }
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            setTimeout(hdlCreateChatbox, 5000, msg);
+            hdlCreateChatbox(msg);
         }
     }
     function hdlCreateChatbox(_msg) {
-        let chatBox = document.getElementById("chatbox");
         for (let i = 0; i < _msg.length; i++) {
             let row = document.createElement("div");
             row.setAttribute("class", "row");
@@ -58,6 +61,7 @@ var Chatrooms;
             chatBox.appendChild(row);
         }
         chatBox.scrollTop = chatBox.scrollHeight;
+        setTimeout(hdlCreateChatbox, 5000);
     }
     async function hdlSendMsg(_event) {
         if (localStorage.getItem("username") != null) {

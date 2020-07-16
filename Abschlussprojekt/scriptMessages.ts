@@ -17,6 +17,8 @@ namespace Chatrooms {
 
     let logoutbttn: HTMLButtonElement = <HTMLButtonElement> <unknown>document.getElementById("logout");
     logoutbttn.addEventListener("click", hdlLogout);
+    
+    let chatBox: HTMLDivElement = document.getElementById("chatbox") as HTMLDivElement;
 
     let currentUser: string = "" + localStorage.getItem("username");
     let where: string = "";
@@ -25,7 +27,12 @@ namespace Chatrooms {
     
     async function hdlChatroom1(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
-            document.getElementById("info")!.setAttribute("style", "display:none");
+
+            //Löschen des vorherigen Chats
+            while (chatBox.firstChild) {
+                chatBox.firstChild.remove();
+            }
+
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
@@ -33,16 +40,17 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            console.log(msg);
-
-            setTimeout(hdlCreateChatbox, 5000, msg);
-            //hdlCreateChatbox(msg);
+            hdlCreateChatbox(msg);
         }
     }
 
     async function hdlChatroom2(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
-            document.getElementById("info")!.setAttribute("style", "display:none");
+
+            while (chatBox.firstChild) {
+                chatBox.firstChild.remove();
+            }
+
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;
@@ -50,14 +58,11 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            setTimeout(hdlCreateChatbox, 5000, msg);
-            
+            hdlCreateChatbox(msg);
         }
     }
 
     function hdlCreateChatbox(_msg: Messages[]): void {
-
-        let chatBox: HTMLDivElement = document.getElementById("chatbox") as HTMLDivElement;
 
         for (let i: number = 0; i < _msg.length; i++) {
             let row: HTMLDivElement = document.createElement("div");  
@@ -84,6 +89,7 @@ namespace Chatrooms {
             chatBox.appendChild(row);
         }
         chatBox.scrollTop = chatBox.scrollHeight;
+        setTimeout(hdlCreateChatbox, 5000);
     }
 
     async function hdlSendMsg(_event: Event): Promise<void> {
@@ -105,5 +111,4 @@ namespace Chatrooms {
         localStorage.clear();
         window.location.href = "Login.html";
     }
-
 }
