@@ -56,6 +56,7 @@ var Chatrooms;
             //Nachrichten Chatroom 1
             else if (q.pathname == "/chatroom1") {
                 _response.write(JSON.stringify(await receiveData(orders2)));
+                console.log(JSON.stringify(await receiveData(orders2)));
             }
             //Nachrichten Chatroom 2
             else if (q.pathname == "/chatroom2") {
