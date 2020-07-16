@@ -33,7 +33,10 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            setTimeout(hdlCreateChatbox, 5000, msg);
+            console.log(msg);
+
+            //setTimeout(hdlCreateChatbox, 5000, msg);
+            hdlCreateChatbox(msg);
         }
     }
 
@@ -48,6 +51,7 @@ namespace Chatrooms {
             let msg: Messages[] = await response.json();
 
             setTimeout(hdlCreateChatbox, 5000, msg);
+            
         }
     }
 
