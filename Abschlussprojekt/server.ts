@@ -83,6 +83,15 @@ export namespace Chatrooms {
             else if (q.pathname == "/sendchatroom2") {
                 orders3.insertOne(q.query);
             }
+
+            //löscht eine Nachricht
+            else if (q.pathname == "/deletechatroom1") {
+                orders2.deleteOne(q.query);
+            }
+
+            else if (q.pathname == "/deletechatroom2") {
+                orders3.deleteOne(q.query);
+            }
         }            
         console.log("Hat geklappt!");
         _response.end();

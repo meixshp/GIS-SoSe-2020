@@ -41,7 +41,7 @@ namespace Chatrooms {
             let msg: Messages[] = await response.json();
 
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 10000, msg, url);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
 
@@ -60,7 +60,7 @@ namespace Chatrooms {
             let msg: Messages[] = await response.json();
 
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 10000, msg, url);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
 
@@ -69,6 +69,7 @@ namespace Chatrooms {
         for (let i: number = 0; i < _msg.length; i++) {
             let row: HTMLDivElement = document.createElement("div");  
             row.setAttribute("class", "row");
+            row.id = "row" + i;
 
             let div: HTMLDivElement = document.createElement("div");
             row.appendChild(div);              
@@ -80,7 +81,8 @@ namespace Chatrooms {
                 div.setAttribute("class", "messageByMe");
                 let deletebttn: HTMLSpanElement = document.createElement("span");      
                 div.appendChild(deletebttn).innerHTML = "x";
-                //deletebttn.addEventListener("click", hdlDeleteMsg);
+                deletebttn.setAttribute("index", _msg[i]._id);
+                deletebttn.addEventListener("click", hdlDeleteMsg);
             }
             else 
                 div.setAttribute("class", "messageByOthers");
@@ -114,6 +116,21 @@ namespace Chatrooms {
         if (_msg.length != msgNew.length) {                          //Vergleich zw. erstem Array und ständig aktualisiertem Array  
             msgNew = msgNew.slice(_msg.length);                      //alte Nachrichten werden aus dem neuen Array entfernt
             hdlCreateChatbox(msgNew);   
+        }
+    }
+
+    async function hdlDeleteMsg(_event: Event): Promise<void> {
+        if (confirm("Möchtest du diese Nachricht löschen?")) {
+            
+            let target: HTMLElement = (<HTMLElement>_event.target);
+            let id: string = "" + target.getAttribute("index");
+
+            let url: string = "https://jiaies2020.herokuapp.com/";
+            url += "delete" + where + "?" + "_id=" + id;
+        
+            await fetch(url);
+
+            (target.parentNode)!.firstChild!.remove();
         }
     }
 
