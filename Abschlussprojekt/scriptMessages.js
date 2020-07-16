@@ -20,7 +20,9 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            setTimeout(hdlCreateChatbox, 5000, msg);
+            console.log(msg);
+            //setTimeout(hdlCreateChatbox, 5000, msg);
+            hdlCreateChatbox(msg);
         }
     }
     async function hdlChatroom2(_event) {
