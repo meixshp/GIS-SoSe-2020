@@ -40,7 +40,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            setInterval(hdlCreateChatbox, 5000, msg);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
 
@@ -58,7 +58,7 @@ namespace Chatrooms {
             let response: Response = await fetch(url);
             let msg: Messages[] = await response.json();
 
-            setInterval(hdlCreateChatbox, 5000, msg);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
 
@@ -104,6 +104,23 @@ namespace Chatrooms {
             let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("textmsg");
             resetForm.reset();
         }
+    }
+
+    async function hdlCheck4NewMsg(_msg: Messages[], _url: string): Promise<void> {
+        let response: Response = await fetch(_url);
+        let msgNew: Messages[] = await response.json();
+        if (_msg.length != msgNew.length) {
+            while (chatBox.firstChild) 
+                chatBox.firstChild.remove();
+            
+            /*let howmany: number = (msgNew.length - _msg.length);
+            for (let y: number = _msg.length; y < howmany; y++) {
+                msgNew = _msg[y];
+            }*/
+            hdlCreateChatbox(msgNew);
+        }        
+        else 
+            hdlCreateChatbox(_msg);
     }
 
     function hdlLogout(_event: Event): void {

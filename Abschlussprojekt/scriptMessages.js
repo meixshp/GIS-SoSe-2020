@@ -24,7 +24,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            setInterval(hdlCreateChatbox, 5000, msg);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
     async function hdlChatroom2(_event) {
@@ -37,7 +37,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             let msg = await response.json();
-            setInterval(hdlCreateChatbox, 5000, msg);
+            setInterval(hdlCheck4NewMsg, 5000, msg, url);
         }
     }
     function hdlCreateChatbox(_msg) {
@@ -73,6 +73,21 @@ var Chatrooms;
             let resetForm = document.getElementById("textmsg");
             resetForm.reset();
         }
+    }
+    async function hdlCheck4NewMsg(_msg, _url) {
+        let response = await fetch(_url);
+        let msgNew = await response.json();
+        if (_msg.length != msgNew.length) {
+            while (chatBox.firstChild)
+                chatBox.firstChild.remove();
+            /*let howmany: number = (msgNew.length - _msg.length);
+            for (let y: number = _msg.length; y < howmany; y++) {
+                msgNew = _msg[y];
+            }*/
+            hdlCreateChatbox(msgNew);
+        }
+        else
+            hdlCreateChatbox(_msg);
     }
     function hdlLogout(_event) {
         localStorage.clear();
