@@ -57,7 +57,7 @@ export namespace Chatrooms {
 
             //User hinzufügen
             else if (q.pathname == "/register") {
-                if (orders1.findOne({username: q.query.username})) 
+                if (await orders1.findOne({username: q.query.username})) 
                     _response.write("false");
                 else {
                     orders1.insertOne(q.query);
