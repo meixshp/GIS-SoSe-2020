@@ -13,6 +13,7 @@ var Chatrooms;
     let currentUser = "" + localStorage.getItem("username");
     let where = "";
     document.getElementById("who").innerHTML = "" + currentUser + "&nbsp;&nbsp;";
+    let msg = [];
     async function hdlChatroom1(_event) {
         if (localStorage.getItem("username") != null) {
             //Löschen des vorherigen Chats
@@ -23,9 +24,9 @@ var Chatrooms;
             where = "chatroom1";
             url += where;
             let response = await fetch(url);
-            let msg = await response.json();
+            msg = await response.json();
             hdlCreateChatbox(msg);
-            hdlCheck4NewMsg(msg, url);
+            setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
@@ -39,9 +40,9 @@ var Chatrooms;
             where = "chatroom2";
             url += where;
             let response = await fetch(url);
-            let msg = await response.json();
+            msg = await response.json();
             hdlCreateChatbox(msg);
-            hdlCheck4NewMsg(msg, url);
+            setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
@@ -78,13 +79,12 @@ var Chatrooms;
         }
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-    async function hdlCheck4NewMsg(_msg, _url) {
+    async function hdlCheck4NewMsg(_url) {
         let response = await fetch(_url);
         let msgNew = await response.json();
-        if (_msg.length != msgNew.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
-            hdlCreateChatbox(msgNew.slice(_msg.length)); //alte Nachrichten werden aus dem neuen Array entfernt
-        }
-        setInterval(hdlCheck4NewMsg, 5000, msgNew, _url);
+        if (msg.length != msgNew.length) //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+            hdlCreateChatbox(msgNew.slice(msg.length)); //alte Nachrichten werden aus dem neuen Array entfernt
+        msg = msgNew;
     }
     function hdlLogout(_event) {
         localStorage.clear();
