@@ -89,7 +89,7 @@ hr + div {
     margin-right: 50px;
 }
  
-#chatverlauf {
+#chatbox {
     background-color: #E9F0F4; 
     height: 70%; 
     width: 100%;
@@ -106,6 +106,7 @@ hr + div {
     background-color: white; 
     padding: 5px;
     padding-left: 10px;
+    max-width: 40%;
     max-width: 55%;
     min-height: 70px;
     margin: 10px;
