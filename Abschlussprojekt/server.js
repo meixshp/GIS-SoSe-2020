@@ -68,13 +68,6 @@ var Chatrooms;
             else if (q.pathname == "/sendchatroom2") {
                 orders3.insertOne(q.query);
             }
-            //löscht eine Nachricht
-            else if (q.pathname == "/deletechatroom1") {
-                await orders2.deleteOne({ _id: Object(q.query._id) });
-            }
-            else if (q.pathname == "/deletechatroom2") {
-                await orders3.deleteOne({ _id: Object(q.query._id) });
-            }
         }
         console.log("Hat geklappt!");
         _response.end();

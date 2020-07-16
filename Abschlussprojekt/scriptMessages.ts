@@ -1,7 +1,6 @@
 namespace Chatrooms {
 
     export interface Messages {
-        _id: string;
         username: string; 
         message: string;
     }
@@ -80,8 +79,6 @@ namespace Chatrooms {
                 div.setAttribute("class", "messageByMe");
                 let deletebttn: HTMLSpanElement = document.createElement("span");      
                 div.appendChild(deletebttn).innerHTML = "x";
-                deletebttn.setAttribute("index", _msg[i]._id);
-                deletebttn.addEventListener("click", hdlDeleteMsg);
             }
             else 
                 div.setAttribute("class", "messageByOthers");
@@ -115,21 +112,6 @@ namespace Chatrooms {
         if (_msg.length != msgNew.length) {                          //Vergleich zw. erstem Array und ständig aktualisiertem Array  
             msgNew = msgNew.slice(_msg.length);                      //alte Nachrichten werden aus dem neuen Array entfernt
             hdlCreateChatbox(msgNew);   
-        }
-    }
-
-    async function hdlDeleteMsg(_event: Event): Promise<void> {
-        if (confirm("Möchtest du diese Nachricht löschen?")) {
-            
-            let target: HTMLElement = (<HTMLElement>_event.target);
-            let id: string = "" + target.getAttribute("index");
-
-            let url: string = "https://jiaies2020.herokuapp.com/";
-            url += "delete" + where + "?" + "_id=" + id;
-        
-            await fetch(url);
-
-            (target.parentElement!).parentElement!.remove();
         }
     }
 

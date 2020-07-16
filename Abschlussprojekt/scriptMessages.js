@@ -54,8 +54,6 @@ var Chatrooms;
                 div.setAttribute("class", "messageByMe");
                 let deletebttn = document.createElement("span");
                 div.appendChild(deletebttn).innerHTML = "x";
-                deletebttn.setAttribute("index", _msg[i]._id);
-                deletebttn.addEventListener("click", hdlDeleteMsg);
             }
             else
                 div.setAttribute("class", "messageByOthers");
@@ -83,16 +81,6 @@ var Chatrooms;
         if (_msg.length != msgNew.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array  
             msgNew = msgNew.slice(_msg.length); //alte Nachrichten werden aus dem neuen Array entfernt
             hdlCreateChatbox(msgNew);
-        }
-    }
-    async function hdlDeleteMsg(_event) {
-        if (confirm("Möchtest du diese Nachricht löschen?")) {
-            let target = _event.target;
-            let id = "" + target.getAttribute("index");
-            let url = "https://jiaies2020.herokuapp.com/";
-            url += "delete" + where + "?" + "_id=" + id;
-            await fetch(url);
-            (target.parentElement).parentElement.remove();
         }
     }
     function hdlLogout(_event) {
