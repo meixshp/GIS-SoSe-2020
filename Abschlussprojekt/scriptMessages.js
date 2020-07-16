@@ -92,7 +92,7 @@ var Chatrooms;
             let url = "https://jiaies2020.herokuapp.com/";
             url += "delete" + where + "?" + "_id=" + id;
             await fetch(url);
-            (target.parentElement).remove();
+            (target.parentElement).parentElement.remove();
         }
     }
     function hdlLogout(_event) {

@@ -129,7 +129,7 @@ namespace Chatrooms {
         
             await fetch(url);
 
-            (target.parentElement)!.remove();
+            (target.parentElement!).parentElement!.remove();
         }
     }
 
