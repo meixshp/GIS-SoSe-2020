@@ -35,7 +35,7 @@ namespace Chatrooms {
 
             console.log(msg);
 
-            //setTimeout(hdlCreateChatbox, 5000, msg);
+            setTimeout(hdlCreateChatbox, 5000, msg);
             //hdlCreateChatbox(msg);
         }
     }
@@ -55,8 +55,7 @@ namespace Chatrooms {
         }
     }
 
-    // tslint:disable-next-line: typedef
-    function hdlCreateChatbox(_msg: Messages[]) {
+    function hdlCreateChatbox(_msg: Messages[]): void {
 
         let chatBox: HTMLDivElement = document.getElementById("chatbox") as HTMLDivElement;
 

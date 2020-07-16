@@ -21,7 +21,7 @@ var Chatrooms;
             let response = await fetch(url);
             let msg = await response.json();
             console.log(msg);
-            //setTimeout(hdlCreateChatbox, 5000, msg);
+            setTimeout(hdlCreateChatbox, 5000, msg);
             //hdlCreateChatbox(msg);
         }
     }
@@ -36,7 +36,6 @@ var Chatrooms;
             setTimeout(hdlCreateChatbox, 5000, msg);
         }
     }
-    // tslint:disable-next-line: typedef
     function hdlCreateChatbox(_msg) {
         let chatBox = document.getElementById("chatbox");
         for (let i = 0; i < _msg.length; i++) {
