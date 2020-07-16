@@ -25,8 +25,10 @@ var Chatrooms;
             let response = await fetch(url);
             let msg = await response.json();
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 5000, msg, url);
+            hdlCheck4NewMsg(msg, url);
         }
+        else
+            alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
     }
     async function hdlChatroom2(_event) {
         if (localStorage.getItem("username") != null) {
@@ -39,29 +41,10 @@ var Chatrooms;
             let response = await fetch(url);
             let msg = await response.json();
             hdlCreateChatbox(msg);
-            setInterval(hdlCheck4NewMsg, 5000, msg, url);
+            hdlCheck4NewMsg(msg, url);
         }
-    }
-    function hdlCreateChatbox(_msg) {
-        for (let i = 0; i < _msg.length; i++) {
-            let row = document.createElement("div");
-            row.setAttribute("class", "row");
-            let div = document.createElement("div");
-            row.appendChild(div);
-            let h4 = document.createElement("h4"); //Name
-            div.appendChild(h4).innerHTML = _msg[i].username;
-            if (_msg[i].username == currentUser) {
-                div.setAttribute("class", "messageByMe");
-                let deletebttn = document.createElement("span");
-                div.appendChild(deletebttn).innerHTML = "x";
-            }
-            else
-                div.setAttribute("class", "messageByOthers");
-            let description = document.createElement("p"); //Nachricht
-            div.appendChild(description).innerHTML = _msg[i].message;
-            chatBox.appendChild(row);
-        }
-        chatBox.scrollTop = chatBox.scrollHeight;
+        else
+            alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
     }
     async function hdlSendMsg(_event) {
         if (localStorage.getItem("username") != null) {
@@ -74,14 +57,35 @@ var Chatrooms;
             let resetForm = document.getElementById("textmsg");
             resetForm.reset();
         }
+        else
+            alert("Du musst eingeloggt sein, um etwas versenden zu können.");
+    }
+    function hdlCreateChatbox(_msg) {
+        for (let i = 0; i < _msg.length; i++) {
+            let row = document.createElement("div");
+            row.setAttribute("class", "row");
+            let div = document.createElement("div");
+            row.appendChild(div);
+            if (_msg[i].username == currentUser)
+                div.setAttribute("class", "messageByMe");
+            else
+                div.setAttribute("class", "messageByOthers");
+            let h4 = document.createElement("h4"); //Name
+            div.appendChild(h4).innerHTML = _msg[i].username;
+            let description = document.createElement("p"); //Nachricht
+            div.appendChild(description).innerHTML = _msg[i].message;
+            chatBox.appendChild(row);
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
     async function hdlCheck4NewMsg(_msg, _url) {
         let response = await fetch(_url);
         let msgNew = await response.json();
-        if (_msg.length != msgNew.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array  
-            msgNew = msgNew.slice(_msg.length); //alte Nachrichten werden aus dem neuen Array entfernt
-            hdlCreateChatbox(msgNew);
+        if (_msg.length != msgNew.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+            hdlCreateChatbox(msgNew.slice(_msg.length)); //alte Nachrichten werden aus dem neuen Array entfernt
+            _msg = msgNew;
         }
+        setInterval(hdlCheck4NewMsg, 5000, _msg, _url);
     }
     function hdlLogout(_event) {
         localStorage.clear();
