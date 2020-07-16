@@ -36,7 +36,7 @@ namespace Chatrooms {
             console.log(msg);
 
             //setTimeout(hdlCreateChatbox, 5000, msg);
-            hdlCreateChatbox(msg);
+            //hdlCreateChatbox(msg);
         }
     }
 
