@@ -11,9 +11,10 @@ var Chatrooms;
     logoutbttn.addEventListener("click", hdlLogout);
     let currentUser = "" + localStorage.getItem("username");
     let where = "";
-    document.getElementById("who").innerHTML = "" + currentUser;
+    document.getElementById("who").innerHTML = "" + currentUser + "&nbsp;&nbsp;";
     async function hdlChatroom1(_event) {
         if (localStorage.getItem("username") != null) {
+            document.getElementById("info").setAttribute("style", "display:none");
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
@@ -24,6 +25,7 @@ var Chatrooms;
     }
     async function hdlChatroom2(_event) {
         if (localStorage.getItem("username") != null) {
+            document.getElementById("info").setAttribute("style", "display:none");
             let url = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;

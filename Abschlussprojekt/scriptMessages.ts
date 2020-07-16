@@ -21,10 +21,11 @@ namespace Chatrooms {
     let currentUser: string = "" + localStorage.getItem("username");
     let where: string = "";
 
-    document.getElementById("who")!.innerHTML = "" + currentUser;
+    document.getElementById("who")!.innerHTML = "" + currentUser + "&nbsp;&nbsp;";
     
     async function hdlChatroom1(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
+            document.getElementById("info")!.setAttribute("style", "display:none");
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom1";
             url += where;
@@ -38,6 +39,7 @@ namespace Chatrooms {
 
     async function hdlChatroom2(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
+            document.getElementById("info")!.setAttribute("style", "display:none");
             let url: string = "https://jiaies2020.herokuapp.com/";
             where = "chatroom2";
             url += where;
