@@ -75,14 +75,16 @@ namespace Chatrooms {
         if (localStorage.getItem("username") != null) {
             let formData: FormData = new FormData(document.forms[0]);
             let url: string = "https://jiaies2020.herokuapp.com/";
-            // tslint:disable-next-line: no-any
-            let query: URLSearchParams = new URLSearchParams(<any>formData);
-            url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString(); 
+            if (formData.get("message") == null) {
+                // tslint:disable-next-line: no-any
+                let query: URLSearchParams = new URLSearchParams(<any>formData);
+                url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString(); 
 
-            await fetch(url); 
-                
-            let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("textmsg");
-            resetForm.reset();
+                await fetch(url); 
+                    
+                let resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById("textmsg");
+                resetForm.reset();
+            }
         }
         else
             alert("Du musst eingeloggt sein, um etwas versenden zu können.");
