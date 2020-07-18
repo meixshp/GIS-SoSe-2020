@@ -91,10 +91,10 @@ var Chatrooms;
             }
         }
         else if (_url == "https://jiaies2020.herokuapp.com/chatroom2") {
-            if (_msg.length != msg1.length) {
-                let slice = _msg.slice(msg1.length); //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+            if (_msg.length != msg2.length) {
+                let slice = _msg.slice(msg2.length); //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
                 hdlCreateChatbox(slice); //alte Nachrichten werden aus dem neuen Array entfernt
-                msg1 = _msg;
+                msg2 = _msg;
             }
         }
     }
