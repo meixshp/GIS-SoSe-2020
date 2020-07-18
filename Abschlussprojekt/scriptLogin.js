@@ -25,17 +25,22 @@ var Chatrooms;
     async function hdlRegisterButton(_event) {
         let formData = new FormData(document.forms[0]);
         let url = "https://jiaies2020.herokuapp.com/";
-        // tslint:disable-next-line: no-any
-        let query = new URLSearchParams(formData);
-        url += "register" + "?" + query.toString();
-        let userRegister = await fetch(url);
-        let userRegisterString = await userRegister.text();
-        if (userRegisterString == "true") {
-            console.log("Erfolgreiche Registrierung!");
-            alert("Deine Registrierung war erfolgreich!");
+        if (formData.get("password") == null) {
+            // tslint:disable-next-line: no-any
+            let query = new URLSearchParams(formData);
+            url += "register" + "?" + query.toString();
+            let userRegister = await fetch(url);
+            let userRegisterString = await userRegister.text();
+            if (userRegisterString == "true") {
+                console.log("Erfolgreiche Registrierung!");
+                alert("Deine Registrierung war erfolgreich!");
+            }
+            else
+                alert("Der Nutzername ist schon vergeben.");
         }
-        else
-            alert("Der Nutzername ist schon vergeben.");
+        else {
+            alert("Bitte gebe ein Passwort ein.");
+        }
     }
 })(Chatrooms || (Chatrooms = {}));
 //# sourceMappingURL=scriptLogin.js.map

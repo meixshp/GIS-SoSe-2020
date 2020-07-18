@@ -53,12 +53,14 @@ var Chatrooms;
         if (localStorage.getItem("username") != null) {
             let formData = new FormData(document.forms[0]);
             let url = "https://jiaies2020.herokuapp.com/";
-            // tslint:disable-next-line: no-any
-            let query = new URLSearchParams(formData);
-            url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString();
-            await fetch(url);
-            let resetForm = document.getElementById("textmsg");
-            resetForm.reset();
+            if (formData.get("message") == null) {
+                // tslint:disable-next-line: no-any
+                let query = new URLSearchParams(formData);
+                url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString();
+                await fetch(url);
+                let resetForm = document.getElementById("textmsg");
+                resetForm.reset();
+            }
         }
         else
             alert("Du musst eingeloggt sein, um etwas versenden zu können.");
