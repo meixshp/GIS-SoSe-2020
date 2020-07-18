@@ -24,7 +24,8 @@ namespace Chatrooms {
 
     document.getElementById("who")!.innerHTML = "" + currentUser + "&nbsp;&nbsp;";
 
-    let msg: Messages[] = [];
+    let msg1: Messages[] = [];
+    let msg2: Messages[] = [];
     
     async function hdlChatroom1(_event: Event): Promise<void> {
         if (localStorage.getItem("username") != null) {
@@ -39,9 +40,9 @@ namespace Chatrooms {
             url += where;
             
             let response: Response = await fetch(url);
-            msg = await response.json();
+            msg1 = await response.json();
 
-            hdlCreateChatbox(msg);
+            hdlCreateChatbox(msg2);
             setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
@@ -60,9 +61,9 @@ namespace Chatrooms {
             url += where;
             
             let response: Response = await fetch(url);
-            msg = await response.json();
+            msg2 = await response.json();
 
-            hdlCreateChatbox(msg);
+            hdlCreateChatbox(msg1);
             setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
@@ -113,10 +114,19 @@ namespace Chatrooms {
     async function hdlCheck4NewMsg(_url: string): Promise<void> {
         let response: Response = await fetch(_url);
         let _msg: Messages[] = await response.json();
-        if (_msg.length != msg.length) {   
-            let slice: Messages[] = _msg.slice(msg.length);                     //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
-            hdlCreateChatbox(slice);          	     //alte Nachrichten werden aus dem neuen Array entfernt
-            msg = _msg;
+        if (_url == "https://jiaies2020.herokuapp.com/chatroom1") {
+            if (_msg.length != msg1.length) {   
+                let slice: Messages[] = _msg.slice(msg1.length);             //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+                hdlCreateChatbox(slice);          	                         //alte Nachrichten werden aus dem neuen Array entfernt
+                msg1 = _msg;
+            }
+        }
+        else if (_url == "https://jiaies2020.herokuapp.com/chatroom2") {
+            if (_msg.length != msg1.length) {   
+                let slice: Messages[] = _msg.slice(msg1.length);             //Vergleich zw. erstem Array und ständig aktualisiertem Array                   
+                hdlCreateChatbox(slice);          	                         //alte Nachrichten werden aus dem neuen Array entfernt
+                msg1 = _msg;
+            }
         }
     }
 
