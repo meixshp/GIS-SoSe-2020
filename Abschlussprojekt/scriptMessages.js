@@ -53,7 +53,7 @@ var Chatrooms;
         if (localStorage.getItem("username") != null) {
             let formData = new FormData(document.forms[0]);
             let url = "https://jiaies2020.herokuapp.com/";
-            if (formData.get("message") == null) {
+            if (formData.get("message") != null) {
                 // tslint:disable-next-line: no-any
                 let query = new URLSearchParams(formData);
                 url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString();

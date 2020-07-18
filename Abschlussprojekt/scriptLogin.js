@@ -25,7 +25,7 @@ var Chatrooms;
     async function hdlRegisterButton(_event) {
         let formData = new FormData(document.forms[0]);
         let url = "https://jiaies2020.herokuapp.com/";
-        if (formData.get("password") == null) {
+        if (formData.get("password") != null) {
             // tslint:disable-next-line: no-any
             let query = new URLSearchParams(formData);
             url += "register" + "?" + query.toString();
