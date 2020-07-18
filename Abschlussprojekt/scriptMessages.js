@@ -26,7 +26,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             msg1 = await response.json();
-            hdlCreateChatbox(msg2);
+            hdlCreateChatbox(msg1);
             setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
@@ -42,7 +42,7 @@ var Chatrooms;
             url += where;
             let response = await fetch(url);
             msg2 = await response.json();
-            hdlCreateChatbox(msg1);
+            hdlCreateChatbox(msg2);
             setInterval(hdlCheck4NewMsg, 5000, url);
         }
         else
