@@ -23,9 +23,9 @@ var Chatrooms;
             alert("Der Nutzername oder das angegebene Passwort ist falsch.");
     }
     async function hdlRegisterButton(_event) {
-        let formData = new FormData(document.forms[0]);
-        let url = "https://jiaies2020.herokuapp.com/";
-        if (formData.get("password") != "") {
+        if (document.forms[1].value != "" || " ") {
+            let formData = new FormData(document.forms[0]);
+            let url = "https://jiaies2020.herokuapp.com/";
             // tslint:disable-next-line: no-any
             let query = new URLSearchParams(formData);
             url += "register" + "?" + query.toString();
