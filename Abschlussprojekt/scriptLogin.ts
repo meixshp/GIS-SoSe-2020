@@ -31,21 +31,20 @@ namespace Chatrooms {
         let url: string = "https://jiaies2020.herokuapp.com/";
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url += "register" + "?" + query.toString();   
+        url += "register" + "?" + query.toString();      
 
-        if (url.charAt(url.length - 1) != "=") {
+        if (formData.get("password")!.toString().length > 2) {
             let userRegister: Response = await fetch(url);
             let userRegisterString: string = await userRegister.text();
 
             if (userRegisterString == "true") {
-                console.log("Erfolgreiche Registrierung!");
-                alert("Deine Registrierung war erfolgreich!");
+              console.log("Erfolgreiche Registrierung!");
+              alert("Deine Registrierung war erfolgreich!");
             }
             else
                 alert("Der Nutzername ist schon vergeben.");
         }
-        else {
-            alert("Bitte gebe ein Passwort ein.");
-        }
+        else
+            alert("Dein Passwort muss mindestens 3 Zeichen beinhalten.");
     }
 }

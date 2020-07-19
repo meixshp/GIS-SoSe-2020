@@ -28,7 +28,7 @@ var Chatrooms;
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
         url += "register" + "?" + query.toString();
-        if (url.charAt(url.length - 1) != "=") {
+        if (formData.get("password").toString().length > 2) {
             let userRegister = await fetch(url);
             let userRegisterString = await userRegister.text();
             if (userRegisterString == "true") {
@@ -38,9 +38,8 @@ var Chatrooms;
             else
                 alert("Der Nutzername ist schon vergeben.");
         }
-        else {
-            alert("Bitte gebe ein Passwort ein.");
-        }
+        else
+            alert("Dein Passwort muss mindestens 3 Zeichen beinhalten.");
     }
 })(Chatrooms || (Chatrooms = {}));
 //# sourceMappingURL=scriptLogin.js.map

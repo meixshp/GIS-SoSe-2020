@@ -53,7 +53,7 @@ var Chatrooms;
         if (localStorage.getItem("username") != null) {
             let formData = new FormData(document.forms[0]);
             let url = "https://jiaies2020.herokuapp.com/";
-            if (formData.get("message") != null) {
+            if (formData.get("message").toString().length != 0) {
                 // tslint:disable-next-line: no-any
                 let query = new URLSearchParams(formData);
                 url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString();
@@ -89,15 +89,17 @@ var Chatrooms;
         if (_url == "https://jiaies2020.herokuapp.com/chatroom1") {
             if (_msg.length != msg1.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array
                 let slice = _msg.slice(msg1.length); //alte Nachrichten werden aus aktuellem Array rausgeschnitten                
-                hdlCreateChatbox(slice); //alte Nachrichten werden aus dem neuen Array entfernt
-                msg1 = _msg;
+                msg1 = _msg; //alte Nachrichten werden aus dem neuen Array entfernt
+                if (where == "chatroom1")
+                    hdlCreateChatbox(slice);
             }
         }
         else if (_url == "https://jiaies2020.herokuapp.com/chatroom2") {
             if (_msg.length != msg2.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array
                 let slice = _msg.slice(msg2.length); //alte Nachrichten werden aus aktuellem Array rausgeschnitten                   
-                hdlCreateChatbox(slice); //neue Nachrichten werden in Chatbox hinzugefügt
-                msg2 = _msg;
+                msg2 = _msg; //neue Nachrichten werden in Chatbox hinzugefügt
+                if (where == "chatroom2")
+                    hdlCreateChatbox(slice);
             }
         }
     }
