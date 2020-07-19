@@ -29,11 +29,11 @@ namespace Chatrooms {
     async function hdlRegisterButton(_event: Event): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "https://jiaies2020.herokuapp.com/";
-        if (formData.get("password") != "" || formData.get("password") !=  " ") {
-            // tslint:disable-next-line: no-any
-            let query: URLSearchParams = new URLSearchParams(<any>formData);
-            url += "register" + "?" + query.toString();      
+        // tslint:disable-next-line: no-any
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+        url += "register" + "?" + query.toString();   
 
+        if (url.charAt(url.length - 1) != "=") {
             let userRegister: Response = await fetch(url);
             let userRegisterString: string = await userRegister.text();
 
