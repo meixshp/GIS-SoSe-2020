@@ -69,7 +69,6 @@ var Chatrooms;
                 orders3.insertOne(q.query);
             }
         }
-        console.log("Hat geklappt!");
         _response.end();
     }
     //sucht nach Daten in der Datenbank

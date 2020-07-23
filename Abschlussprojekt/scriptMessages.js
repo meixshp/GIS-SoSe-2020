@@ -22,12 +22,13 @@ var Chatrooms;
                 chatBox.firstChild.remove();
             }
             let url = "https://jiaies2020.herokuapp.com/";
+            //let url: string = "http://localhost:8100/";
             where = "chatroom1";
             url += where;
             let response = await fetch(url);
             msg1 = await response.json();
-            hdlCreateChatbox(msg1);
-            setInterval(hdlCheck4NewMsg, 5000, url);
+            hdlCreateChatbox(msg1); //sendet sie zur Function, die sie anzeigen lässt
+            setInterval(hdlCheck4NewMsg, 5000, url); //soll im 5sek-Takt prüfen, ob es zu neuen Nachrichten gekommen ist
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
@@ -39,27 +40,27 @@ var Chatrooms;
                 chatBox.firstChild.remove();
             }
             let url = "https://jiaies2020.herokuapp.com/";
+            //let url: string = "http://localhost:8100/";
             where = "chatroom2";
             url += where;
             let response = await fetch(url);
             msg2 = await response.json();
-            hdlCreateChatbox(msg2);
-            setInterval(hdlCheck4NewMsg, 5000, url);
+            hdlCreateChatbox(msg2); //sendet sie zur Function, die sie anzeigen lässt
+            setInterval(hdlCheck4NewMsg, 5000, url); //soll im 5sek-Takt prüfen, ob es zu neuen Nachrichten gekommen ist
         }
         else
             alert("Du musst eingeloggt sein, um auf die Chatrooms zugreifen zu können.");
     }
     async function hdlSendMsg(_event) {
-        if (localStorage.getItem("username") != null) {
+        if (localStorage.getItem("username") != null) { //kann nur ausgeführt werden, wenn sich im LocalStorage ein Username befindet
             let formData = new FormData(document.forms[0]);
             let url = "https://jiaies2020.herokuapp.com/";
-            if (formData.get("message").toString().length != 0) {
+            //let url: string = "http://localhost:8100/";
+            if (formData.get("message").toString().length != 0) { //Nachricht soll mind. 1 Zeichen beinhalten
                 // tslint:disable-next-line: no-any
                 let query = new URLSearchParams(formData);
                 url += "send" + where + "?" + "username=" + currentUser + "&" + query.toString();
                 await fetch(url);
-                let resetForm = document.getElementById("textmsg");
-                resetForm.reset();
             }
         }
         else
@@ -75,30 +76,32 @@ var Chatrooms;
                 div.setAttribute("class", "messageByMe");
             else
                 div.setAttribute("class", "messageByOthers");
-            let h4 = document.createElement("h4"); //Name
+            let h4 = document.createElement("h4"); //Username
             div.appendChild(h4).innerHTML = _msg[i].username;
             let description = document.createElement("p"); //Nachricht
             div.appendChild(description).innerHTML = _msg[i].message;
             chatBox.appendChild(row);
         }
         chatBox.scrollTop = chatBox.scrollHeight; //Scrollbar soll unten, bei aktuellsten Nachrichten, bleiben
-    }
+    } //hier gefunden: https://stackoverflow.com/questions/40903462/how-to-keep-a-scrollbar-always-bottom
     async function hdlCheck4NewMsg(_url) {
         let response = await fetch(_url);
         let _msg = await response.json();
         if (_url == "https://jiaies2020.herokuapp.com/chatroom1") {
+            //if (_url == "http://localhost:8100/chatroom1") {
             if (_msg.length != msg1.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array
                 let slice = _msg.slice(msg1.length); //alte Nachrichten werden aus aktuellem Array rausgeschnitten                
-                msg1 = _msg; //alte Nachrichten werden aus dem neuen Array entfernt
-                if (where == "chatroom1")
+                msg1 = _msg; //Array wird aktualisiert
+                if (where == "chatroom1") //Nachricht soll nur angezeigt werden, wenn sich Nutzer im richtigen Chatroom befindet 
                     hdlCreateChatbox(slice);
             }
         }
         else if (_url == "https://jiaies2020.herokuapp.com/chatroom2") {
+            //else if (_url == "http://localhost:8100/chatroom2") {
             if (_msg.length != msg2.length) { //Vergleich zw. erstem Array und ständig aktualisiertem Array
                 let slice = _msg.slice(msg2.length); //alte Nachrichten werden aus aktuellem Array rausgeschnitten                   
-                msg2 = _msg; //neue Nachrichten werden in Chatbox hinzugefügt
-                if (where == "chatroom2")
+                msg2 = _msg; //Array wird aktualisiert
+                if (where == "chatroom2") //Nachricht soll nur angezeigt werden, wenn sich Nutzer im richtigen Chatroom befindet
                     hdlCreateChatbox(slice);
             }
         }
