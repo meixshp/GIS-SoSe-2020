@@ -5,6 +5,7 @@
     header {
         height: 70px;
         width: 98%; 
+        padding: 20px;
     }
     #center > div {
         width: 270px;
@@ -52,6 +53,7 @@
     header {
         height: 120px;
         width: 98%; 
+        padding: 20px;
     }
     #center > div {
         height: 500px;
@@ -95,6 +97,7 @@
     header {
         height: 50px;
         width: 90%; 
+        padding: 10px;
     }
     #center > div {
         left: 50%;
@@ -144,7 +147,6 @@ body {
 
 header {
     background-color: #DCEFC5;
-    padding: 20px;
     position: sticky;
     top: 0;
 }
