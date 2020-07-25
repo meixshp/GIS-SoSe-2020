@@ -15,22 +15,21 @@
         transform: translateX(-50%) translateY(-50%);
     }
     #center2 {
-        width: 50%;
+        width: 800px;
     }
     button {
        cursor: pointer;
     }
     #chatbox {
         height: 500px;
-        margin-top: 2%
     }
     .row {
-        width: 98%;
+        width: 770px;
     }
     #buttons {
         margin: 20px;
         margin-top: 230px;
-        margin-left: 10%;
+        margin-left: 140px;
         width: 110px;
         padding: 15px;
     }
