@@ -94,7 +94,7 @@
     }
     header {
         height: 50px;
-        width: 88%; 
+        width: 90%; 
     }
     #center > div {
         left: 50%;
@@ -103,7 +103,7 @@
         height: 350px;
     }
     #center2 {
-        width: 100%;
+        width: 90%;
     }
     #chatbox {
         margin-top: 40px; 
