@@ -33,7 +33,7 @@
         width: 110px;
         padding: 15px;
     }
-    #buttons input {
+    input {
         margin: 10px
     }
     #messagebox {
@@ -77,7 +77,7 @@
         margin-left: 20px;
         padding: 10px;
     }
-    #buttons input {
+    input {
         margin: 2px
     }
     #messagebox {
@@ -120,7 +120,7 @@
         margin-left: 20px;
         padding: 8px;
     }
-    #buttons input {
+    input {
         margin: 3px
     }
     #messagebox {
@@ -204,6 +204,14 @@ h2 ~ p {
     margin-bottom: 10px
 }
 
+h4 {
+    margin-top: 5px;
+}
+
+h4:hover {
+    color: grey;
+}
+
 .messageByOthers {
     float: left;
 }
@@ -212,14 +220,6 @@ h2 ~ p {
     float: right;    
     margin-right: 10px
 }
-
-.row h4 {
-    margin-top: 5px;
-}
-
-.row h4:hover {
-    color: grey;
- }
 
 #chatbox + div {
     background-color: #DCEFC5;
@@ -242,6 +242,10 @@ textarea {
     height: 50px;
     margin-top: 10px;
     margin-right: 20px
+}
+
+img[alt=meme] {
+    width: 100%
 }
 
 footer {
